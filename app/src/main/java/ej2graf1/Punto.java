@@ -13,6 +13,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
  */
 public class Punto {
 
+    public static int radio = 5;
+    public static Color color;
+    
     /**
      * @return the px
      */
@@ -40,11 +43,6 @@ public class Punto {
     public void setPy(int py) {
         this.py = py;
     }
-
-    public static int radio = 5;
-    public static Color color;
-    
-   
     private int px;
     private int py;
 
@@ -52,12 +50,14 @@ public class Punto {
         this.px = px;
         this.py = py;
     }
-
-    
     
     public void dibujar(ShapeRenderer rend)
     {
-
+        if(rend != null)
+        {
+            rend.setColor(Color.GOLD);
+            rend.circle(getPx() * Canvas.escala, getPy() * Canvas.escala, radio);
+        }
     }
 
     public Punto() {

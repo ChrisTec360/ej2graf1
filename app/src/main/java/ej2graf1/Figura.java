@@ -17,14 +17,8 @@ public class Figura {
     
     private DefaultListModel<Punto> listaPuntos;
 
-    public Figura() {
-        nombre = "f1";
-        
-        getListaPuntos().addElement(new Punto(1, 1));
-        getListaPuntos().addElement(new Punto(2, 2));
-        getListaPuntos().addElement(new Punto(2, 1));
-        getListaPuntos().addElement(new Punto(5, 5));
-        getListaPuntos().addElement(new Punto(7, 8));
+    public Figura(String nombre) {
+        this.nombre = nombre;
     }
     
     /**
@@ -47,12 +41,14 @@ public class Figura {
             getListaPuntos().get(i).dibujar(rend);   
         }
         
+        /*
         rend.setColor(Color.RED);
         rend.rectLine(getListaPuntos().get(0).getPx() * Canvas.escala, 
                       getListaPuntos().get(0).getPy() * Canvas.escala, 
                       getListaPuntos().get(1).getPx() * Canvas.escala, 
                       getListaPuntos().get(1).getPy() * Canvas.escala, 
                       3);
+        */
         
         /*
         rend.setColor(Color.RED);
@@ -93,4 +89,11 @@ public class Figura {
     public void setListaPuntos(DefaultListModel<Punto> listaPuntos) {
         this.listaPuntos = listaPuntos;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
+    
 }

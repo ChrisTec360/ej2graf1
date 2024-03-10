@@ -21,9 +21,7 @@ public class Canvas implements ApplicationListener{
 
     public static int escala = 20;
     
-    Figura fig1;
-    
-    //DefaultListModel<Figura> ListaFiguras;
+    public DefaultListModel<Figura> ListaFiguras;
     
     VentanaPrincipal v;
     
@@ -33,8 +31,7 @@ public class Canvas implements ApplicationListener{
 
     public Canvas(VentanaPrincipal padre) {
         this.v = padre;
-        
-        fig1 = new Figura();
+        ListaFiguras = new DefaultListModel<>();
     }
     
     @Override
@@ -68,7 +65,9 @@ public class Canvas implements ApplicationListener{
         
         rend.begin(ShapeRenderer.ShapeType.Filled);
         
-        fig1.dibujar(rend);
+        for (int i = 0; i < ListaFiguras.size(); i++) {
+            ListaFiguras.get(i).dibujar(rend);
+        }
         
         //rend.setColor(Color.GOLD);
         //rend.circle((Integer)v.jSpinner1.getValue(), 200, 50);
