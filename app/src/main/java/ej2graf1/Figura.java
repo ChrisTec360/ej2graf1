@@ -18,7 +18,7 @@ public class Figura {
     Canvas c;
     
     private DefaultListModel<Punto> listaPuntos;
-
+   
     public Figura(String nombre) {
         this.nombre = nombre;
     }

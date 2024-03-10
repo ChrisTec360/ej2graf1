@@ -104,5 +104,9 @@ public class Canvas implements ApplicationListener{
         font.dispose();
         rend.dispose();
     }
+
+    public static void setEscala(int escala) {
+        Canvas.escala = escala;
+    }
     
 }

@@ -7,6 +7,7 @@ package ej2graf1;
 import com.badlogic.gdx.backends.lwjgl.LwjglAWTCanvas;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.google.common.primitives.Ints;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -123,11 +124,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         BTNAgregarPunto = new javax.swing.JButton();
         BTN_EliminarPunto = new javax.swing.JButton();
         btnAcerca = new javax.swing.JButton();
+        textEscala = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 420));
         setMinimumSize(new java.awt.Dimension(420, 420));
-        setPreferredSize(new java.awt.Dimension(920, 697));
 
         jSplitPane1.setDividerLocation(350);
 
@@ -311,7 +311,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(46, 46, 46))
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -349,6 +351,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        textEscala.setText("20");
+        textEscala.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textEscalaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -359,14 +368,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 896, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAcerca)
+                        .addGap(205, 205, 205)
+                        .addComponent(textEscala, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(btnAcerca)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAcerca)
+                    .addComponent(textEscala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -445,6 +458,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 + "\nBazán Calderón Christian Emmanuel");
     }//GEN-LAST:event_btnAcercaActionPerformed
 
+    private void textEscalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textEscalaActionPerformed
+        // TODO add your handling code here:
+        //JOptionPane.showConfirmDialog(null, textEscala.getText());
+        JOptionPane.showMessageDialog(null, textEscala.getText());
+        Canvas.setEscala(Integer.valueOf(textEscala.getText()));
+    }//GEN-LAST:event_textEscalaActionPerformed
+    Canvas y;
+
+ 
     /**
      * @param args the command line arguments
      */
@@ -506,5 +528,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField textEscala;
     // End of variables declaration//GEN-END:variables
 }
