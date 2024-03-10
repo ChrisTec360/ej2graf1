@@ -54,26 +54,36 @@ public class Canvas implements ApplicationListener{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
         rend.begin(ShapeRenderer.ShapeType.Line);
-        rend.setColor(Color.WHITE);
-        rend.line(1 * escala, 0 , 1 * escala, Gdx.graphics.getHeight());
-        rend.line(0, 1 * escala , Gdx.graphics.getWidth(),1 * escala);
+            rend.setColor(Color.WHITE);
+            rend.line(1 * escala, 0 , 1 * escala, Gdx.graphics.getHeight());
+            rend.line(0, 1 * escala , Gdx.graphics.getWidth(),1 * escala);
         rend.end();
         
         batch.begin();
-        font.draw(batch, "Hola mundo", 100, 100);
+            font.draw(batch, "Hola mundo", 100, 100);
         batch.end();
         
         rend.begin(ShapeRenderer.ShapeType.Filled);
         
-        for (int i = 0; i < ListaFiguras.size(); i++) {
-            ListaFiguras.get(i).dibujar(rend);
-        }
-        
-        //rend.setColor(Color.GOLD);
-        //rend.circle((Integer)v.jSpinner1.getValue(), 200, 50);
-        //rend.setColor(Color.RED);
-        //rend.rectLine(100,300, 200, 400, 5);
-        
+            for (int i = 0; i < ListaFiguras.size(); i++) {
+                ListaFiguras.get(i).dibujar(rend);
+            }
+
+            int h = Gdx.graphics.getHeight(); ///400
+            int w = Gdx.graphics.getWidth();  ///400
+            int i=0, j=0, x=0;
+
+            for(i=0; i<=h; i++){
+                rend.rectLine(0,i*escala, w, i*escala, 1, com.badlogic.gdx.graphics.Color.WHITE, com.badlogic.gdx.graphics.Color.WHITE);    
+            }
+            for(j=0; j<=w; j++){
+                rend.rectLine(j*escala,0, j*escala, h, 1, com.badlogic.gdx.graphics.Color.WHITE, com.badlogic.gdx.graphics.Color.WHITE);    
+            }
+            //rend.setColor(Color.GOLD);
+            //rend.circle((Integer)v.jSpinner1.getValue(), 200, 50);
+            //rend.setColor(Color.RED);
+            //rend.rectLine(100,300, 200, 400, 5);
+
         rend.end();
     }
 
