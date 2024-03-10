@@ -99,6 +99,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mantel = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -123,12 +124,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnEliminarPunto = new ej2graf1.MiButton();
         btnAgregarPunto = new ej2graf1.MiButton();
         btnEditarPunto = new ej2graf1.MiButton();
-        btnAcerca = new javax.swing.JButton();
         textEscala = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        miButton1 = new ej2graf1.MiButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 153));
         setMinimumSize(new java.awt.Dimension(420, 420));
+
+        mantel.setBackground(new java.awt.Color(0, 0, 0));
 
         jSplitPane1.setDividerLocation(350);
 
@@ -139,18 +143,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jSplitPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jSplitPane2.setDividerLocation(150);
 
+        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setMaximumSize(new java.awt.Dimension(700, 700));
         jPanel3.setPreferredSize(new java.awt.Dimension(149, 670));
 
         jScrollPane1.setViewportView(JLSTFiguras);
 
+        jPanel6.setBackground(new java.awt.Color(51, 51, 51));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre:");
 
         btnAgregarFig.setText("Agregar");
         btnAgregarFig.setColorNormal(new java.awt.Color(0, 255, 0));
+        btnAgregarFig.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnAgregarFig.setColorTextPressed(new java.awt.Color(0, 0, 0));
         btnAgregarFig.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAgregarFig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,6 +170,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         btnEditarFig.setText("Editar");
+        btnEditarFig.setColorNormal(new java.awt.Color(0, 255, 0));
         btnEditarFig.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnEditarFig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +179,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         btnEditarFig1.setBackground(new java.awt.Color(255, 0, 0));
+        btnEditarFig1.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarFig1.setText("Eliminar");
         btnEditarFig1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnEditarFig1.addActionListener(new java.awt.event.ActionListener() {
@@ -228,22 +241,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         jSplitPane2.setLeftComponent(jPanel3);
 
+        jPanel4.setBackground(new java.awt.Color(102, 102, 102));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.setPreferredSize(new java.awt.Dimension(199, 670));
 
         jScrollPane2.setViewportView(JLST_PUNTOS);
 
+        jPanel5.setBackground(new java.awt.Color(51, 51, 51));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("X:");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Y:");
 
+        btnEliminarPunto.setBackground(new java.awt.Color(250, 0, 0));
+        btnEliminarPunto.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarPunto.setText("Eliminar");
         btnEliminarPunto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnEliminarPunto.addActionListener(new java.awt.event.ActionListener() {
@@ -262,6 +283,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         btnEditarPunto.setText("Editar");
+        btnEditarPunto.setColorNormal(new java.awt.Color(0, 255, 0));
         btnEditarPunto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnEditarPunto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,12 +310,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(btnAgregarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEditarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnEliminarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(btnEliminarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,9 +332,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(btnEliminarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -322,10 +344,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(46, 46, 46))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -355,13 +375,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(jPanel2);
 
-        btnAcerca.setText("Acerca de");
-        btnAcerca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAcercaActionPerformed(evt);
-            }
-        });
-
         textEscala.setText("20");
         textEscala.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -374,49 +387,67 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Escala:");
+
+        miButton1.setBackground(new java.awt.Color(0, 0, 255));
+        miButton1.setForeground(new java.awt.Color(255, 255, 255));
+        miButton1.setText("Acerca de");
+        miButton1.setColorNormal(new java.awt.Color(0, 0, 255));
+        miButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout mantelLayout = new javax.swing.GroupLayout(mantel);
+        mantel.setLayout(mantelLayout);
+        mantelLayout.setHorizontalGroup(
+            mantelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1090, Short.MAX_VALUE)
+            .addGroup(mantelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mantelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(mantelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1066, Short.MAX_VALUE)
+                        .addGroup(mantelLayout.createSequentialGroup()
+                            .addComponent(miButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(117, 117, 117)
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(textEscala, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap()))
+        );
+        mantelLayout.setVerticalGroup(
+            mantelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 804, Short.MAX_VALUE)
+            .addGroup(mantelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mantelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(mantelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(textEscala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(miButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 896, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAcerca)
-                        .addGap(129, 129, 129)
-                        .addComponent(jLabel3)
-                        .addGap(39, 39, 39)
-                        .addComponent(textEscala, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addComponent(mantel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAcerca)
-                    .addComponent(textEscala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(9, 9, 9)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(mantel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAcercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcercaActionPerformed
-        JOptionPane.showMessageDialog(null, "Graficación grupo 1 - Equipo 4"
-                + "\n\nBazán Calderón Christian Emmanuel"
-                + "\nFranco Vidrio Guillermo"
-                + "\nSánchez Arenas Perla Vanessa"
-                + "\nSedeño García José Daniel"
-                + "\nVillanueva Gutiérrez Miriam Alejandra"
-                + "\nVillafán Contreras Luis Gustavo");
-    }//GEN-LAST:event_btnAcercaActionPerformed
 
     private void textEscalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textEscalaActionPerformed
         // TODO add your handling code here:
@@ -504,6 +535,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         JLST_PUNTOS.updateUI();
     }//GEN-LAST:event_btnEditarPuntoActionPerformed
+
+    private void miButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miButton1ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Graficación grupo 1 - Equipo 4"
+                + "\n\nBazán Calderón Christian Emmanuel"
+                + "\nFranco Vidrio Guillermo"
+                + "\nSánchez Arenas Perla Vanessa"
+                + "\nSedeño García José Daniel"
+                + "\nVillanueva Gutiérrez Miriam Alejandra"
+                + "\nVillafán Contreras Luis Gustavo");
+    }//GEN-LAST:event_miButton1ActionPerformed
     Canvas y;
 
  
@@ -545,7 +587,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<Figura> JLSTFiguras;
     private javax.swing.JList<Punto> JLST_PUNTOS;
-    private javax.swing.JButton btnAcerca;
     private ej2graf1.MiButton btnAgregarFig;
     private ej2graf1.MiButton btnAgregarPunto;
     private ej2graf1.MiButton btnEditarFig;
@@ -569,6 +610,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JPanel mantel;
+    private ej2graf1.MiButton miButton1;
     private javax.swing.JTextField textEscala;
     // End of variables declaration//GEN-END:variables
 }
