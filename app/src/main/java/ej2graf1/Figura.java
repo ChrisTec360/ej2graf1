@@ -14,6 +14,8 @@ import javax.swing.DefaultListModel;
  */
 public class Figura {
     private String nombre;
+    public int escale=20;
+    Canvas c;
     
     private DefaultListModel<Punto> listaPuntos;
 
@@ -39,7 +41,22 @@ public class Figura {
     {
         for (int i = 0; i < getListaPuntos().size(); i++) {
             getListaPuntos().get(i).dibujar(rend);   
-        }
+            if(i<getListaPuntos().size()-1){
+                rend.rectLine(getListaPuntos().get(i).getPx()*Canvas.escala,
+                    getListaPuntos().get(i).getPy()*Canvas.escala,
+                    getListaPuntos().get(i+1).getPx()*Canvas.escala,
+                    getListaPuntos().get(i+1).getPy()*Canvas.escala, 4);
+            }
+            else{
+                rend.rectLine(getListaPuntos().get(i).getPx()*Canvas.escala,
+                    getListaPuntos().get(i).getPy()*Canvas.escala,
+                    getListaPuntos().get(0).getPx()*Canvas.escala,
+                    getListaPuntos().get(0).getPy()*Canvas.escala, 4);
+            }
+            
+        }   
+        
+        
         
         /*
         rend.setColor(Color.RED);
