@@ -125,6 +125,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         BTN_EliminarPunto = new javax.swing.JButton();
         btnAcerca = new javax.swing.JButton();
         textEscala = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(420, 420));
@@ -357,6 +358,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 textEscalaActionPerformed(evt);
             }
         });
+        textEscala.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textEscalaKeyTyped(evt);
+            }
+        });
+
+        jLabel3.setText("Escala:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -368,7 +376,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 896, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAcerca)
-                        .addGap(205, 205, 205)
+                        .addGap(129, 129, 129)
+                        .addComponent(jLabel3)
+                        .addGap(39, 39, 39)
                         .addComponent(textEscala, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -378,7 +388,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAcerca)
-                    .addComponent(textEscala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textEscala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(9, 9, 9)
                 .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -464,6 +475,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, textEscala.getText());
         Canvas.setEscala(Integer.valueOf(textEscala.getText()));
     }//GEN-LAST:event_textEscalaActionPerformed
+
+    private void textEscalaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textEscalaKeyTyped
+        // TODO add your handling code here:
+        char key = evt.getKeyChar();
+        String text = textEscala.getText();
+
+        // Verificar si es un dígito
+        if (!Character.isDigit(key)) {
+            evt.consume(); // Consumir evento si no es dígito
+            return;
+        }
+        if (textEscala.getText().length() == 2) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_textEscalaKeyTyped
     Canvas y;
 
  
@@ -514,6 +540,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
