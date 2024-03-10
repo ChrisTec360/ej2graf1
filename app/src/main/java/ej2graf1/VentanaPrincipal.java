@@ -107,22 +107,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JLSTFiguras = new javax.swing.JList<>();
         jPanel6 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        BTNAgregarPunto1 = new javax.swing.JButton();
-        BTN_EliminarPunto1 = new javax.swing.JButton();
+        btnAgregarFig = new ej2graf1.MiButton();
+        btnEditarFig = new ej2graf1.MiButton();
+        btnEditarFig1 = new ej2graf1.MiButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         JLST_PUNTOS = new javax.swing.JList<>();
         jPanel5 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        BTNAgregarPunto = new javax.swing.JButton();
-        BTN_EliminarPunto = new javax.swing.JButton();
+        btnEliminarPunto = new ej2graf1.MiButton();
+        btnAgregarPunto = new ej2graf1.MiButton();
+        btnEditarPunto = new ej2graf1.MiButton();
         btnAcerca = new javax.swing.JButton();
         textEscala = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -147,26 +147,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton2.setText("Editar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("Nombre:");
 
-        BTNAgregarPunto1.setText("Agregar");
-        BTNAgregarPunto1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarFig.setText("Agregar");
+        btnAgregarFig.setColorNormal(new java.awt.Color(0, 255, 0));
+        btnAgregarFig.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAgregarFig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTNAgregarPunto1ActionPerformed(evt);
+                btnAgregarFigActionPerformed(evt);
             }
         });
 
-        BTN_EliminarPunto1.setText("Eliminar");
-        BTN_EliminarPunto1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarFig.setText("Editar");
+        btnEditarFig.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnEditarFig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_EliminarPunto1ActionPerformed(evt);
+                btnEditarFigActionPerformed(evt);
+            }
+        });
+
+        btnEditarFig1.setBackground(new java.awt.Color(255, 0, 0));
+        btnEditarFig1.setText("Eliminar");
+        btnEditarFig1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnEditarFig1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarFig1ActionPerformed(evt);
             }
         });
 
@@ -181,12 +186,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField4))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BTNAgregarPunto1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BTN_EliminarPunto1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(btnEditarFig1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditarFig, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAgregarFig, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -196,13 +201,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BTNAgregarPunto1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BTN_EliminarPunto1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(btnAgregarFig, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEditarFig, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEditarFig1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -223,7 +228,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jSplitPane2.setLeftComponent(jPanel3);
@@ -237,26 +242,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setText("X:");
 
-        jButton1.setText("Editar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Y:");
 
-        BTNAgregarPunto.setText("Agregar");
-        BTNAgregarPunto.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarPunto.setText("Eliminar");
+        btnEliminarPunto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnEliminarPunto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTNAgregarPuntoActionPerformed(evt);
+                btnEliminarPuntoActionPerformed(evt);
             }
         });
 
-        BTN_EliminarPunto.setText("Eliminar");
-        BTN_EliminarPunto.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarPunto.setText("Agregar");
+        btnAgregarPunto.setColorNormal(new java.awt.Color(0, 255, 0));
+        btnAgregarPunto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAgregarPunto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_EliminarPuntoActionPerformed(evt);
+                btnAgregarPuntoActionPerformed(evt);
+            }
+        });
+
+        btnEditarPunto.setText("Editar");
+        btnEditarPunto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnEditarPunto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarPuntoActionPerformed(evt);
             }
         });
 
@@ -275,14 +284,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTNAgregarPunto))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(btnAgregarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(BTN_EliminarPunto)
-                        .addGap(32, 32, 32)))
+                        .addComponent(btnEliminarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -298,11 +308,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTNAgregarPunto)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BTN_EliminarPunto)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEditarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnEliminarPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -334,7 +344,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,81 +408,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(getPuntoSeleccionado() != null)
-        {
-            getPuntoSeleccionado().setPx(Integer.parseInt(jTextField1.getText()));
-            getPuntoSeleccionado().setPy(Integer.parseInt(jTextField2.getText()));
-        }
-        
-        JLST_PUNTOS.updateUI();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(!jTextField4.getText().isEmpty() && FiguraSeleccionada != null)
-        {
-            FiguraSeleccionada.setNombre(jTextField4.getText());
-        }
-        
-        JLSTFiguras.updateUI();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void BTNAgregarPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNAgregarPuntoActionPerformed
-        if(FiguraSeleccionada != null)
-        {
-            int px = Ints.tryParse(jTextField1.getText()).intValue();
-            int py = Ints.tryParse(jTextField2.getText()).intValue();
-            
-            jTextField1.setText(""+px);
-            jTextField1.setText(""+py);
-            
-            FiguraSeleccionada.getListaPuntos().addElement(new Punto(px,py));
-        }
-        
-        JLST_PUNTOS.updateUI();
-    }//GEN-LAST:event_BTNAgregarPuntoActionPerformed
-
-    private void BTN_EliminarPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EliminarPuntoActionPerformed
-        if(FiguraSeleccionada != null && getPuntoSeleccionado() != null)
-        {
-            FiguraSeleccionada.getListaPuntos().removeElement(getPuntoSeleccionado());
-        }
-        
-        JLST_PUNTOS.updateUI();
-    }//GEN-LAST:event_BTN_EliminarPuntoActionPerformed
-
-    private void BTNAgregarPunto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNAgregarPunto1ActionPerformed
-        if(!jTextField4.getText().isEmpty())
-        {
-            canvas.ListaFiguras.addElement(new Figura(jTextField4.getText()));
-        }
-        
-    }//GEN-LAST:event_BTNAgregarPunto1ActionPerformed
-
-    private void BTN_EliminarPunto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EliminarPunto1ActionPerformed
-        if(FiguraSeleccionada != null)
-        {
-            puntoSeleccionado = null;
-            canvas.ListaFiguras.removeElement(FiguraSeleccionada);
-        }
-        
-        JLSTFiguras.updateUI();
-    }//GEN-LAST:event_BTN_EliminarPunto1ActionPerformed
-
     private void btnAcercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcercaActionPerformed
-        JOptionPane.showMessageDialog(null, "Graficación grupo 1"
-                + "\nBazán Calderón Christian Emmanuel"
-                + "\nBazán Calderón ChristIAn"
-                + "\nBazán Calderón Christian Emmanuel"
-                + "\nBazán Calderón Christian Emmanuel"
-                + "\nBazán Calderón Christian Emmanuel"
-                + "\nBazán Calderón Christian Emmanuel");
+        JOptionPane.showMessageDialog(null, "Graficación grupo 1 - Equipo 4"
+                + "\n\nBazán Calderón Christian Emmanuel"
+                + "\nFranco Vidrio Guillermo"
+                + "\nSánchez Arenas Perla Vanessa"
+                + "\nSedeño García José Daniel"
+                + "\nVillanueva Gutiérrez Miriam Alejandra"
+                + "\nVillafán Contreras Luis Gustavo");
     }//GEN-LAST:event_btnAcercaActionPerformed
 
     private void textEscalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textEscalaActionPerformed
         // TODO add your handling code here:
-        //JOptionPane.showConfirmDialog(null, textEscala.getText());
-        JOptionPane.showMessageDialog(null, textEscala.getText());
+        JOptionPane.showMessageDialog(null, "Escala: " + textEscala.getText());
         Canvas.setEscala(Integer.valueOf(textEscala.getText()));
     }//GEN-LAST:event_textEscalaActionPerformed
 
@@ -490,6 +438,72 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_textEscalaKeyTyped
+
+    private void btnAgregarFigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarFigActionPerformed
+        // TODO add your handling code here:
+        if(!jTextField4.getText().isEmpty())
+        {
+            canvas.ListaFiguras.addElement(new Figura(jTextField4.getText()));
+        }
+    }//GEN-LAST:event_btnAgregarFigActionPerformed
+
+    private void btnEditarFigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarFigActionPerformed
+        // TODO add your handling code here:
+        if(!jTextField4.getText().isEmpty() && FiguraSeleccionada != null)
+        {
+            FiguraSeleccionada.setNombre(jTextField4.getText());
+        }
+        
+        JLSTFiguras.updateUI();
+    }//GEN-LAST:event_btnEditarFigActionPerformed
+
+    private void btnEditarFig1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarFig1ActionPerformed
+        // TODO add your handling code here:
+        if(FiguraSeleccionada != null)
+        {
+            puntoSeleccionado = null;
+            canvas.ListaFiguras.removeElement(FiguraSeleccionada);
+        }
+        
+        JLSTFiguras.updateUI();
+    }//GEN-LAST:event_btnEditarFig1ActionPerformed
+
+    private void btnEliminarPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPuntoActionPerformed
+        // TODO add your handling code here:
+        if(FiguraSeleccionada != null && getPuntoSeleccionado() != null)
+        {
+            FiguraSeleccionada.getListaPuntos().removeElement(getPuntoSeleccionado());
+        }
+        
+        JLST_PUNTOS.updateUI();
+    }//GEN-LAST:event_btnEliminarPuntoActionPerformed
+
+    private void btnAgregarPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPuntoActionPerformed
+        // TODO add your handling code here:
+                if(FiguraSeleccionada != null)
+        {
+            int px = Ints.tryParse(jTextField1.getText()).intValue();
+            int py = Ints.tryParse(jTextField2.getText()).intValue();
+            
+            jTextField1.setText(""+px);
+            jTextField1.setText(""+py);
+            
+            FiguraSeleccionada.getListaPuntos().addElement(new Punto(px,py));
+        }
+        
+        JLST_PUNTOS.updateUI();
+    }//GEN-LAST:event_btnAgregarPuntoActionPerformed
+
+    private void btnEditarPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPuntoActionPerformed
+        // TODO add your handling code here:
+        if(getPuntoSeleccionado() != null)
+        {
+            getPuntoSeleccionado().setPx(Integer.parseInt(jTextField1.getText()));
+            getPuntoSeleccionado().setPy(Integer.parseInt(jTextField2.getText()));
+        }
+        
+        JLST_PUNTOS.updateUI();
+    }//GEN-LAST:event_btnEditarPuntoActionPerformed
     Canvas y;
 
  
@@ -529,15 +543,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BTNAgregarPunto;
-    private javax.swing.JButton BTNAgregarPunto1;
-    private javax.swing.JButton BTN_EliminarPunto;
-    private javax.swing.JButton BTN_EliminarPunto1;
     private javax.swing.JList<Figura> JLSTFiguras;
     private javax.swing.JList<Punto> JLST_PUNTOS;
     private javax.swing.JButton btnAcerca;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private ej2graf1.MiButton btnAgregarFig;
+    private ej2graf1.MiButton btnAgregarPunto;
+    private ej2graf1.MiButton btnEditarFig;
+    private ej2graf1.MiButton btnEditarFig1;
+    private ej2graf1.MiButton btnEditarPunto;
+    private ej2graf1.MiButton btnEliminarPunto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
