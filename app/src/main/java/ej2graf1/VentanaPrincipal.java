@@ -129,9 +129,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelModos = new javax.swing.JPanel();
         tab = new javax.swing.JTabbedPane();
         rotacion = new javax.swing.JPanel();
+        miButton3 = new ej2graf1.MiButton();
         traslacion = new javax.swing.JPanel();
         escalado = new javax.swing.JPanel();
         sesgo = new javax.swing.JPanel();
+        miButton2 = new ej2graf1.MiButton();
         miButton1 = new ej2graf1.MiButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -395,15 +397,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         panelModos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        miButton3.setText("miButton3");
+
         javax.swing.GroupLayout rotacionLayout = new javax.swing.GroupLayout(rotacion);
         rotacion.setLayout(rotacionLayout);
         rotacionLayout.setHorizontalGroup(
             rotacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 318, Short.MAX_VALUE)
+            .addGroup(rotacionLayout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(miButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         rotacionLayout.setVerticalGroup(
             rotacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 97, Short.MAX_VALUE)
+            .addGroup(rotacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(miButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         tab.addTab("Rot", rotacion);
@@ -434,15 +444,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         tab.addTab("Escal", escalado);
 
+        miButton2.setText("miButton2");
+
         javax.swing.GroupLayout sesgoLayout = new javax.swing.GroupLayout(sesgo);
         sesgo.setLayout(sesgoLayout);
         sesgoLayout.setHorizontalGroup(
             sesgoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 318, Short.MAX_VALUE)
+            .addGroup(sesgoLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(miButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         sesgoLayout.setVerticalGroup(
             sesgoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 97, Short.MAX_VALUE)
+            .addGroup(sesgoLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(miButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         tab.addTab("Sesgo", sesgo);
@@ -689,6 +707,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel mantel;
     private ej2graf1.MiButton miButton1;
+    private ej2graf1.MiButton miButton2;
+    private ej2graf1.MiButton miButton3;
     private javax.swing.JPanel panelFiguras;
     private javax.swing.JPanel panelModos;
     private javax.swing.JPanel panelPuntos;
