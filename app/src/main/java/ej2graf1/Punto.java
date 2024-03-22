@@ -19,34 +19,34 @@ public class Punto {
     /**
      * @return the px
      */
-    public int getPx() {
+    public float getPx() {
         return px;
     }
 
     /**
      * @param px the px to set
      */
-    public void setPx(int px) {
+    public void setPx(float px) {
         this.px = px;
     }
 
     /**
      * @return the py
      */
-    public int getPy() {
+    public float getPy() {
         return py;
     }
 
     /**
      * @param py the py to set
      */
-    public void setPy(int py) {
+    public void setPy(float py) {
         this.py = py;
     }
-    private int px;
-    private int py;
+    private float px;
+    private float py;
 
-    public Punto(int px, int py) {
+    public Punto(float px, float py) {
         this.px = px;
         this.py = py;
     }
