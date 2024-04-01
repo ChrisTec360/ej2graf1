@@ -159,11 +159,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnSesgar = new ej2graf1.MiButton();
         boxSesgo = new javax.swing.JComboBox<>();
         cajaSesgar = new javax.swing.JTextField();
-        miButton1 = new ej2graf1.MiButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         guardarItem = new javax.swing.JMenuItem();
         cargarItem = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -269,7 +269,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(panelFigurasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelFigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -277,10 +277,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             panelFigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFigurasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         jSplitPane2.setLeftComponent(panelFiguras);
@@ -419,11 +419,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             panelPuntosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPuntosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelPuntosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelPuntosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(textEscala))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -459,9 +459,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(rotacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cajaRotar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRotar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         tab.addTab("Rotación", rotacion);
@@ -500,7 +500,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         traslacionLayout.setVerticalGroup(
             traslacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, traslacionLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(traslacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelcajaTraslacionX)
                     .addComponent(labelcajaTraslacionY)
@@ -508,7 +508,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(cajaTraslacionY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnTrasladar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         tab.addTab("Traslación", traslacion);
@@ -541,8 +541,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         escaladoLayout.setVerticalGroup(
             escaladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escaladoLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+            .addGroup(escaladoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(escaladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
@@ -550,7 +550,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(cajaEscalarY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEscalar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         tab.addTab("Escalado", escalado);
@@ -575,14 +575,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         sesgoLayout.setVerticalGroup(
             sesgoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sesgoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(sesgoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(sesgoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boxSesgo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cajaSesgar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSesgar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         tab.addTab("Sesgado", sesgo);
@@ -595,7 +595,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         panelModosLayout.setVerticalGroup(
             panelModosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(tab)
         );
 
         javax.swing.GroupLayout controlesLayout = new javax.swing.GroupLayout(controles);
@@ -611,7 +611,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         controlesLayout.setVerticalGroup(
             controlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlesLayout.createSequentialGroup()
-                .addComponent(jSplitPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSplitPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(panelModos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 6, Short.MAX_VALUE))
@@ -619,27 +619,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(controles);
 
-        miButton1.setBackground(new java.awt.Color(0, 0, 255));
-        miButton1.setForeground(new java.awt.Color(255, 255, 255));
-        miButton1.setText("Acerca de");
-        miButton1.setColorNormal(new java.awt.Color(0, 0, 255));
-        miButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout mantelLayout = new javax.swing.GroupLayout(mantel);
         mantel.setLayout(mantelLayout);
         mantelLayout.setHorizontalGroup(
             mantelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mantelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(mantelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1099, Short.MAX_VALUE)
-                    .addGroup(mantelLayout.createSequentialGroup()
-                        .addComponent(miButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1099, Short.MAX_VALUE)
                 .addContainerGap())
         );
         mantelLayout.setVerticalGroup(
@@ -647,9 +633,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(mantelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(miButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Archivo");
@@ -671,6 +655,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(cargarItem);
+
+        jMenuItem1.setText("Acerca de");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
 
@@ -781,17 +773,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         JLST_PUNTOS.updateUI();
     }//GEN-LAST:event_btnEditarPuntoActionPerformed
 
-    private void miButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miButton1ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Graficación grupo 1 - Equipo 4"
-                + "\n\nBazán Calderón Christian Emmanuel"
-                + "\nFranco Vidrio Guillermo"
-                + "\nSánchez Arenas Perla Vanessa"
-                + "\nSedeño García José Daniel"
-                + "\nVillanueva Gutiérrez Miriam Alejandra"
-                + "\nVillafán Contreras Luis Gustavo");
-    }//GEN-LAST:event_miButton1ActionPerformed
-
     private void cajaPuntoXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaPuntoXActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cajaPuntoXActionPerformed
@@ -834,7 +815,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             s += "\n";
         }
         
-        
+            
         System.out.println("El contendido del archivo será " +s);
           
         
@@ -853,31 +834,46 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String path = System.getProperty("user.home")+ File.separator + "figurasG.txt";
         
-       
-        try(BufferedReader reader = new BufferedReader(new FileReader(path))){
-            String linea;
-            while((linea = reader.readLine()) != null){
-                System.out.println(linea);
-                String[] tokens = linea.split(","); //separar todo los eparado por coma
+        if(canvas.ListaFiguras.isEmpty()){
+            try(BufferedReader reader = new BufferedReader(new FileReader(path))){
+                String linea;
+                while((linea = reader.readLine()) != null){
+                    System.out.println(linea);
+                    String[] tokens = linea.split(","); //separar todo los eparado por coma
+
+                    Figura f = new Figura(tokens[0]);
+                    for (int i = 1; i < tokens.length; i+=2) {
+                        //
+                        float x = Floats.tryParse(tokens[i]);
+                        float y = Floats.tryParse(tokens[i+1]);
+
+                        Punto p = new Punto(x, y);
+                        f.getListaPuntos().addElement(p);
+                    }
+                    canvas.ListaFiguras.addElement(f); //traemos el nombre de la figura
                 
-                Figura f = new Figura(tokens[0]);
-                for (int i = 1; i < tokens.length; i+=2) {
-                    //
-                    float x = Floats.tryParse(tokens[i]);
-                    float y = Floats.tryParse(tokens[i+1]);
-                    
-                    Punto p = new Punto(x, y);
-                    f.getListaPuntos().addElement(p);
                 }
-                canvas.ListaFiguras.addElement(f); //traemos el nombre de la figura
-                
-            }
             
+            }
+            catch(IOException iox){
+                JOptionPane.showMessageDialog(null, "hola");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Ya se cargaron los puntos");
         }
-        catch(IOException iox){
-            JOptionPane.showMessageDialog(null, "hola");
-        }
+        
     }//GEN-LAST:event_cargarItemActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+                JOptionPane.showMessageDialog(null, "Graficación grupo 1 - Equipo 4"
+                + "\n\nBazán Calderón Christian Emmanuel"
+                + "\nFranco Vidrio Guillermo"
+                + "\nSánchez Arenas Perla Vanessa"
+                + "\nSedeño García José Daniel"
+                + "\nVillanueva Gutiérrez Miriam Alejandra"
+                + "\nVillafán Contreras Luis Gustavo");
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
     Canvas y;
 
  
@@ -952,6 +948,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
@@ -962,7 +959,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel labelcajaTraslacionX;
     private javax.swing.JLabel labelcajaTraslacionY;
     private javax.swing.JPanel mantel;
-    private ej2graf1.MiButton miButton1;
     private javax.swing.JPanel panelFiguras;
     private javax.swing.JPanel panelModos;
     private javax.swing.JPanel panelPuntos;
