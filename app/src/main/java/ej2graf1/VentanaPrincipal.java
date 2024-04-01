@@ -814,7 +814,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
             s += "\n";
         }
-        
             
         System.out.println("El contendido del archivo será " +s);
           
