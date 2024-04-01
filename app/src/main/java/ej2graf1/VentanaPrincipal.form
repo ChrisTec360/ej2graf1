@@ -84,8 +84,8 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="mantel" min="-2" pref="742" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="mantel" pref="729" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -116,7 +116,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSplitPane1" min="-2" pref="691" max="-2" attributes="0"/>
-                  <EmptySpace pref="38" max="32767" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -172,7 +172,7 @@
                           <Component id="jSplitPane2" min="-2" pref="479" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="panelModos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -651,7 +651,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="tab" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tab" min="-2" pref="161" max="-2" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -696,7 +696,7 @@
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="btnRotar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="69" max="32767" attributes="0"/>
+                                      <EmptySpace pref="46" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -761,7 +761,7 @@
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="btnTrasladar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="69" max="32767" attributes="0"/>
+                                      <EmptySpace pref="46" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -839,7 +839,7 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnEscalar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="75" max="32767" attributes="0"/>
+                                      <EmptySpace pref="52" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -906,7 +906,7 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnSesgar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="69" max="32767" attributes="0"/>
+                                      <EmptySpace pref="46" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>

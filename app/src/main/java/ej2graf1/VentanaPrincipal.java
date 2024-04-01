@@ -461,7 +461,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(cajaRotar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRotar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         tab.addTab("Rotación", rotacion);
@@ -508,7 +508,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(cajaTraslacionY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnTrasladar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         tab.addTab("Traslación", traslacion);
@@ -550,7 +550,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(cajaEscalarY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEscalar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         tab.addTab("Escalado", escalado);
@@ -582,7 +582,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(cajaSesgar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSesgar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         tab.addTab("Sesgado", sesgo);
@@ -595,7 +595,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         panelModosLayout.setVerticalGroup(
             panelModosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tab)
+            .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout controlesLayout = new javax.swing.GroupLayout(controles);
@@ -614,7 +614,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jSplitPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(panelModos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 29, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(controles);
@@ -633,7 +633,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(mantelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Archivo");
@@ -680,8 +680,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mantel, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(mantel, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -783,14 +783,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             if(cajaTraslacionX.getText().isEmpty() || cajaTraslacionY.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "Debes llenar los dos campos");
             }else{
-                float tx = Float.parseFloat(cajaTraslacionX.getText());
-                float ty = Float.parseFloat(cajaTraslacionY.getText());
+                float Tx = Float.valueOf(cajaTraslacionX.getText());
+                float Ty = Float.valueOf(cajaTraslacionY.getText());
+                float xx; 
+                float yy;
                 
-                Figura c = null;
-                
-                float nuevox, nuevoy;
-                int i;
-                int x = c.getListaPuntos().getSize();
+                for(int i=0; i< FiguraSeleccionada.getListaPuntos().getSize(); i++){
+                    Punto elactual = FiguraSeleccionada.getListaPuntos().get(i);
+       //           Matriz31 m = new Matriz31(Tx*FiguraSeleccionada.getListaPuntos(),Ty);
+                    xx = Tx + elactual.getPx();
+                    yy = Ty + elactual.getPy();
+                    elactual.setPx(xx);
+                    elactual.setPy(yy);
+                }
                  
             }
         }else{
