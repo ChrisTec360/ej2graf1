@@ -790,11 +790,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 
                 for(int i=0; i< FiguraSeleccionada.getListaPuntos().getSize(); i++){
                     Punto elactual = FiguraSeleccionada.getListaPuntos().get(i);
-       //           Matriz31 m = new Matriz31(Tx*FiguraSeleccionada.getListaPuntos(),Ty);
-                    xx = Tx + elactual.getPx();
-                    yy = Ty + elactual.getPy();
-                    elactual.setPx(xx);
-                    elactual.setPy(yy);
+                    
+                    float x = elactual.getPx();
+                    float y = elactual.getPy();
+                   
+                    float[][] valores3x3 = {
+                        {1, 0, Tx},
+                        {0, 1, Ty},
+                        {0, 0, 1}
+                    };
+                    
+                    float[] valores3x1 = {x,y,1};
+                    Matriz33 m33 = new Matriz33(valores3x3);
+                    Matriz31 m31 = new Matriz31(valores3x1);
+                    
+                    float[] resultado = m33.multiMatrices(m31);
+                    System.out.println("Resultado de la multiplicación:");
+                    for (float valor : resultado) {
+                        System.out.println(valor);
+                    }
+                    
+                    elactual.setPx(resultado[0]);
+                    elactual.setPy(resultado[1]);
+                    
+                    /*
+                    [1][0][Tx]   [x]
+                    [0][1][Ty] * [y]
+                    [0][0][1]    [1]
+                    */
+                    
+                    
                 }
                  
             }

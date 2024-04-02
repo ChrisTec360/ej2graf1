@@ -9,14 +9,13 @@ package ej2graf1;
  * @author Chris
  */
 public class Matriz31 {
-    
-    float z11, z12, z21, z22;
+   
+    float[] matriz;
 
-    public Matriz31(float z11, float z12) {
-        this.z11 = z11;
-        this.z12 = z12;
-
+    public Matriz31(float[] matriz) {
+        this.matriz = matriz;
     }
-    
-    
+    public float getElemento(int indice) {
+        return this.matriz[indice];
+    }
 }
