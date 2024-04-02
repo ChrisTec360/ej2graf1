@@ -812,7 +812,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     
                     elactual.setPx(resultado[0]);
                     elactual.setPy(resultado[1]);
+                    JLST_PUNTOS.updateUI(); 
                     
+
                     /*
                     [1][0][Tx]   [x]
                     [0][1][Ty] * [y]
