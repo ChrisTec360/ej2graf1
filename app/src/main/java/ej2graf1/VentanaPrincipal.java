@@ -434,6 +434,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelModos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnRotar.setText("Rotar");
+        btnRotar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRotarActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Ángulo:");
@@ -514,6 +519,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tab.addTab("Traslación", traslacion);
 
         btnEscalar.setText("Escalar");
+        btnEscalar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEscalarActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("x:");
@@ -785,8 +795,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }else{
                 float Tx = Float.valueOf(cajaTraslacionX.getText());
                 float Ty = Float.valueOf(cajaTraslacionY.getText());
-                float xx; 
-                float yy;
                 
                 for(int i=0; i< FiguraSeleccionada.getListaPuntos().getSize(); i++){
                     Punto elactual = FiguraSeleccionada.getListaPuntos().get(i);
@@ -905,6 +913,125 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 + "\nVillanueva Gutiérrez Miriam Alejandra"
                 + "\nVillafán Contreras Luis Gustavo");
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void btnEscalarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscalarActionPerformed
+        // TODO add your handling code here:
+        if(FiguraSeleccionada!=null){
+             if(cajaEscalarX.getText().isEmpty() || cajaEscalarY.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Debes llenar los dos campos");
+            }else{
+                float Sx = Float.valueOf(cajaEscalarX.getText());
+                float Sy = Float.valueOf(cajaEscalarY.getText());
+                
+                for(int i=0; i< FiguraSeleccionada.getListaPuntos().getSize(); i++){
+                    Punto elactual = FiguraSeleccionada.getListaPuntos().get(i);
+                    
+                    float x = elactual.getPx();
+                    float y = elactual.getPy();
+                   
+                    float[][] valores3x3 = {
+                        {Sx, 0 , 0},
+                        {0 , Sy, 0},
+                        {0 , 0 , 1}
+                    };
+                    
+                    float[] valores3x1 = {x,y,1};
+                    Matriz33 m33 = new Matriz33(valores3x3);
+                    Matriz31 m31 = new Matriz31(valores3x1);
+                    
+                    float[] resultado = m33.multiMatrices(m31);
+                    System.out.println("Resultado de la multiplicación:");
+                    for (float valor : resultado) {
+                        System.out.println(valor);
+                    }
+                    
+                    elactual.setPx(resultado[0]);
+                    elactual.setPy(resultado[1]);
+                    JLST_PUNTOS.updateUI(); 
+                    
+
+                    /*
+                    [1][0][Tx]   [x]
+                    [0][1][Ty] * [y]
+                    [0][0][1]    [1]
+                    */
+                    
+                    
+                }
+                
+            }//termina el else
+        }
+    }//GEN-LAST:event_btnEscalarActionPerformed
+
+    private void btnRotarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRotarActionPerformed
+        // TODO add your handling code here:
+        if (FiguraSeleccionada != null) {
+            if (cajaRotar.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Debes llenar el campo");
+            } else {
+                float angulo = Float.parseFloat(cajaRotar.getText());
+                float cos = (float) Math.cos(Math.toRadians(angulo));
+                float sen = (float) Math.sin(Math.toRadians(angulo));
+
+                // 1. Calcular el centro de la figura
+                float centroX = 0;
+                float centroY = 0;
+                int numPuntos = FiguraSeleccionada.getListaPuntos().getSize();
+                for (int i = 0; i < numPuntos; i++) {
+                    Punto punto = FiguraSeleccionada.getListaPuntos().get(i);
+                    centroX += punto.getPx();
+                    centroY += punto.getPy();
+                }
+                centroX /= numPuntos;
+                centroY /= numPuntos;
+
+                // 2. Trasladar todos los puntos de la figura al origen (0, 0)
+                Matriz33 traslacion1 = new Matriz33(new float[][]{
+                    {1, 0, -centroX},
+                    {0, 1, -centroY},
+                    {0, 0, 1}
+                });
+
+                // 3. Aplicar la rotación alrededor del origen
+                Matriz33 rotacion = new Matriz33(new float[][]{
+                    {cos, -sen, 0},
+                    {sen, cos, 0},
+                    {0, 0, 1}
+                });
+
+                // 4. Trasladar de nuevo todos los puntos a su posición original
+                Matriz33 traslacion2 = new Matriz33(new float[][]{
+                    {1, 0, centroX},
+                    {0, 1, centroY},
+                    {0, 0, 1}
+                });
+
+                for (int i = 0; i < numPuntos; i++) {
+                    Punto punto = FiguraSeleccionada.getListaPuntos().get(i);
+                    float[] puntoArray = {punto.getPx(), punto.getPy(), 1};
+
+                    Matriz31 puntoMatriz = new Matriz31(puntoArray);
+
+                    // Aplicar la transformación completa
+                    puntoMatriz = new Matriz31(traslacion1.multiMatrices(puntoMatriz));
+                    puntoMatriz = new Matriz31(rotacion.multiMatrices(puntoMatriz));
+                    puntoMatriz = new Matriz31(traslacion2.multiMatrices(puntoMatriz));
+
+                    // Actualizar las coordenadas del punto
+                    punto.setPx(puntoMatriz.getElemento(0));
+                    punto.setPy(puntoMatriz.getElemento(1));
+                }
+
+                // Actualizar la interfaz de usuario
+                JLST_PUNTOS.updateUI();
+            }
+        }
+
+
+
+
+
+    }//GEN-LAST:event_btnRotarActionPerformed
     Canvas y;
 
  
