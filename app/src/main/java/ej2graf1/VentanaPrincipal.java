@@ -32,7 +32,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     Canvas canvas;
-    
+    private String rutaArchivoActual = null;
     private Figura FiguraSeleccionada = null;
     private Punto puntoSeleccionado = null;
 
@@ -862,31 +862,40 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void guardarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarItemActionPerformed
         // TODO add your handling code here:
-        String s = "";
-        int opcion = JOptionPane.showConfirmDialog(null, "¿Guardar los cambios?");
-        if (opcion == JOptionPane.YES_OPTION) {
-            String path = System.getProperty("user.home") + File.separator + "figurasG.txt";
-            for (int i = 0; i < canvas.ListaFiguras.size(); i++) {
-                Figura f = canvas.ListaFiguras.get(i);
-                s += f.getNombre();
+    // Verificar si hay un archivo actual para guardar
+        if (rutaArchivoActual != null && !rutaArchivoActual.isEmpty()) {
+            String s = "";
+            int opcion = JOptionPane.showConfirmDialog(null, "¿Guardar los cambios?");
+            if (opcion == JOptionPane.YES_OPTION) {
+                // No necesitas obtener la ruta del archivo actual usando System.getProperty(), ya que ya tienes la ruta almacenada en la variable rutaArchivoActual
+                // String path = System.getProperty(rutaArchivoActual);
+                String path = rutaArchivoActual;
 
-                for (int j = 0; j < f.getListaPuntos().size(); j++) {
-                    Punto p = f.getListaPuntos().get(j);
+                for (int i = 0; i < canvas.ListaFiguras.size(); i++) {
+                    Figura f = canvas.ListaFiguras.get(i);
+                    s += f.getNombre();
 
-                    s += "," + p.getPx() + "," + p.getPy();
+                    for (int j = 0; j < f.getListaPuntos().size(); j++) {
+                        Punto p = f.getListaPuntos().get(j);
+
+                        s += "," + p.getPx() + "," + p.getPy();
+                    }
+                    s += "\n";
                 }
-                s += "\n";
-            }
 
-            System.out.println("El contendido del archivo será " + s);
-            JOptionPane.showMessageDialog(null,"Datos guardados");
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
-                writer.append(s);
-                writer.close();
-            } catch (IOException ioex) {
-                JOptionPane.showMessageDialog(this, "Error de IO" + ioex.getMessage());
+                System.out.println("El contendido del archivo será " + s);
+                JOptionPane.showMessageDialog(null, "Datos guardados");
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
+                    writer.append(s);
+                    writer.close();
+                } catch (IOException ioex) {
+                    JOptionPane.showMessageDialog(this, "Error de IO" + ioex.getMessage());
 
+                }
             }
+        } else {
+            // Si no hay un archivo actual para guardar, mostrar un mensaje al usuario
+            JOptionPane.showMessageDialog(null, "No hay un archivo actual para guardar.", "Error", JOptionPane.ERROR_MESSAGE);
         }
            
     }//GEN-LAST:event_guardarItemActionPerformed
@@ -925,34 +934,40 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     private void cargarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarItemActionPerformed
         // TODO add your handling code here:
-        String path = System.getProperty("user.home")+ File.separator + "figurasG.txt";
-        
-        if(canvas.ListaFiguras.isEmpty()){
-            try(BufferedReader reader = new BufferedReader(new FileReader(path))){
+        // Crear un JFileChooser
+        JFileChooser fileChooser = new JFileChooser();
+
+        // Mostrar el diálogo de selección de archivo
+        int seleccion = fileChooser.showOpenDialog(null);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            // Obtener el archivo seleccionado por el usuario
+            File archivoSeleccionado = fileChooser.getSelectedFile();
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(archivoSeleccionado))) {
                 String linea;
-                while((linea = reader.readLine()) != null){
+                canvas.ListaFiguras.clear();
+                while ((linea = reader.readLine()) != null) {
                     System.out.println(linea);
-                    String[] tokens = linea.split(","); //separar todo los eparado por coma
+                    String[] tokens = linea.split(","); // Separar todo los separado por coma
 
                     Figura f = new Figura(tokens[0]);
-                    for (int i = 1; i < tokens.length; i+=2) {
-                        //
+                    for (int i = 1; i < tokens.length; i += 2) {
                         float x = Floats.tryParse(tokens[i]);
-                        float y = Floats.tryParse(tokens[i+1]);
+                        float y = Floats.tryParse(tokens[i + 1]);
 
                         Punto p = new Punto(x, y);
                         f.getListaPuntos().addElement(p);
                     }
-                    canvas.ListaFiguras.addElement(f); //traemos el nombre de la figura
-                
+                    canvas.ListaFiguras.addElement(f); // Traemos el nombre de la figura
+                    
                 }
-            
+                
+                JLSTFiguras.updateUI();
+                JLST_PUNTOS.updateUI();
+            } catch (IOException iox) {
+                JOptionPane.showMessageDialog(null, "Error al cargar las figuras.");
             }
-            catch(IOException iox){
-                JOptionPane.showMessageDialog(null, "hola");
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Ya se cargaron los puntos");
         }
         
     }//GEN-LAST:event_cargarItemActionPerformed
@@ -1167,10 +1182,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         break;
                     default:
                         throw new AssertionError();
-                }//termina switch
-                
-                
-                 
+                }//termina switch     
             }
         }else{
             JOptionPane.showMessageDialog(null, "Debes seleccionar una figura");
@@ -1180,6 +1192,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void boxSesgoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxSesgoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boxSesgoActionPerformed
+
+    private void cargarFigurasDesdeArchivo(String rutaArchivo) {
+       
+            try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                System.out.println(linea);
+                String[] tokens = linea.split(","); // Separar todo los separado por coma
+
+                Figura f = new Figura(tokens[0]);
+                for (int i = 1; i < tokens.length; i += 2) {
+                    float x = Floats.tryParse(tokens[i]);
+                    float y = Floats.tryParse(tokens[i + 1]);
+
+                    Punto p = new Punto(x, y);
+                    f.getListaPuntos().addElement(p);
+                }
+                canvas.ListaFiguras.addElement(f); // Traemos el nombre de la figura
+            }
+        } catch (IOException iox) {
+            JOptionPane.showMessageDialog(null, "Error al cargar las figuras.");
+        }
+         
+    }
 
     private void itemNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemNuevoActionPerformed
         // TODO add your handling code here:
@@ -1199,7 +1235,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             // El usuario ha seleccionado una ubicación para guardar el archivo
             File archivo = fileChooser.getSelectedFile();
             path = archivo.getAbsolutePath();
-
+            // Limpiar la lista de figuras antes de cargar nuevas figuras
+            canvas.ListaFiguras.clear();
             // Verificar si el nombre de archivo tiene la extensión ".txt"
             if (!path.toLowerCase().endsWith(".txt")) {
                 // Si no tiene la extensión ".txt", agregarla manualmente
@@ -1212,7 +1249,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     if (!archivo.createNewFile()) {
                         // No se pudo crear el archivo
                         JOptionPane.showMessageDialog(null, "No se pudo crear el archivo.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
+                    } else{
+                        // Se creó el archivo exitosamente, cargar las figuras desde el nuevo archivo
+                        rutaArchivoActual = archivo.getAbsolutePath();
+                        cargarFigurasDesdeArchivo(archivo.getAbsolutePath());                    }
                 }
             } catch (IOException ex) {
                 // Manejar cualquier excepción de E/S
