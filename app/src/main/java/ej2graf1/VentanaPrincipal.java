@@ -566,9 +566,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tab.addTab("Escalado", escalado);
 
         btnSesgar.setText("Sesgar");
+        btnSesgar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSesgarActionPerformed(evt);
+            }
+        });
 
         boxSesgo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         boxSesgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "x", "y" }));
+        boxSesgo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxSesgoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout sesgoLayout = new javax.swing.GroupLayout(sesgo);
         sesgo.setLayout(sesgoLayout);
@@ -776,8 +786,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(getPuntoSeleccionado() != null)
         {
-            getPuntoSeleccionado().setPx(Integer.parseInt(cajaPuntoX.getText()));
-            getPuntoSeleccionado().setPy(Integer.parseInt(cajaPuntoY.getText()));
+            getPuntoSeleccionado().setPx(Float.parseFloat(cajaPuntoX.getText()));
+            getPuntoSeleccionado().setPy(Float.parseFloat(cajaPuntoY.getText()));
         }
         
         JLST_PUNTOS.updateUI();
@@ -916,65 +926,65 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btnEscalarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscalarActionPerformed
         // TODO add your handling code here:
- if (FiguraSeleccionada != null) {
-    if (cajaEscalarX.getText().isEmpty() || cajaEscalarY.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Debes llenar los dos campos");
-    } else {
-        float Sx = Float.valueOf(cajaEscalarX.getText());
-        float Sy = Float.valueOf(cajaEscalarY.getText());
+        if (FiguraSeleccionada != null) {
+            if (cajaEscalarX.getText().isEmpty() || cajaEscalarY.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Debes llenar los dos campos");
+            } else {
+                float Sx = Float.valueOf(cajaEscalarX.getText());
+                float Sy = Float.valueOf(cajaEscalarY.getText());
 
-        // 1. Calcular el centro de la figura
-        float centroX = 0;
-        float centroY = 0;
-        int numPuntos = FiguraSeleccionada.getListaPuntos().getSize();
-        for (int i = 0; i < numPuntos; i++) {
-            Punto punto = FiguraSeleccionada.getListaPuntos().get(i);
-            centroX += punto.getPx();
-            centroY += punto.getPy();
-        }
-        centroX /= numPuntos;
-        centroY /= numPuntos;
+                // 1. Calcular el centro de la figura
+                float centroX = 0;
+                float centroY = 0;
+                int numPuntos = FiguraSeleccionada.getListaPuntos().getSize();
+                for (int i = 0; i < numPuntos; i++) {
+                    Punto punto = FiguraSeleccionada.getListaPuntos().get(i);
+                    centroX += punto.getPx();
+                    centroY += punto.getPy();
+                }
+                centroX /= numPuntos;
+                centroY /= numPuntos;
 
-        // 2. Trasladar todos los puntos de la figura al origen (0, 0)
-        Matriz33 traslacion1 = new Matriz33(new float[][] {
-            {1, 0, -centroX},
-            {0, 1, -centroY},
-            {0, 0, 1}
-        });
+                // 2. Trasladar todos los puntos de la figura al origen (0, 0)
+                Matriz33 traslacion1 = new Matriz33(new float[][]{
+                    {1, 0, -centroX},
+                    {0, 1, -centroY},
+                    {0, 0, 1}
+                });
 
-        // 3. Aplicar la escala
-        Matriz33 escala = new Matriz33(new float[][] {
-            {Sx, 0, 0},
-            {0, Sy, 0},
-            {0, 0, 1}
-        });
+                // 3. Aplicar la escala
+                Matriz33 escala = new Matriz33(new float[][]{
+                    {Sx, 0, 0},
+                    {0, Sy, 0},
+                    {0, 0, 1}
+                });
 
-        // 4. Trasladar de nuevo todos los puntos a su posición original
-        Matriz33 traslacion2 = new Matriz33(new float[][] {
-            {1, 0, centroX},
-            {0, 1, centroY},
-            {0, 0, 1}
-        });
+                // 4. Trasladar de nuevo todos los puntos a su posición original
+                Matriz33 traslacion2 = new Matriz33(new float[][]{
+                    {1, 0, centroX},
+                    {0, 1, centroY},
+                    {0, 0, 1}
+                });
 
-        for (int i = 0; i < numPuntos; i++) {
-            Punto punto = FiguraSeleccionada.getListaPuntos().get(i);
-            float[] puntoArray = {punto.getPx(), punto.getPy(), 1};
-            Matriz31 puntoMatriz = new Matriz31(puntoArray);
-            
-            // Aplicar la transformación completa
-            puntoMatriz = new Matriz31(traslacion1.multiMatrices(puntoMatriz));
-            puntoMatriz = new Matriz31(escala.multiMatrices(puntoMatriz));
-            puntoMatriz = new Matriz31(traslacion2.multiMatrices(puntoMatriz));
+                for (int i = 0; i < numPuntos; i++) {
+                    Punto punto = FiguraSeleccionada.getListaPuntos().get(i);
+                    float[] puntoArray = {punto.getPx(), punto.getPy(), 1};
+                    Matriz31 puntoMatriz = new Matriz31(puntoArray);
 
-            // Actualizar las coordenadas del punto
-            punto.setPx(puntoMatriz.getElemento(0));
-            punto.setPy(puntoMatriz.getElemento(1));
-        }
+                    // Aplicar la transformación completa
+                    puntoMatriz = new Matriz31(traslacion1.multiMatrices(puntoMatriz));
+                    puntoMatriz = new Matriz31(escala.multiMatrices(puntoMatriz));
+                    puntoMatriz = new Matriz31(traslacion2.multiMatrices(puntoMatriz));
 
-        // Actualizar la interfaz de usuario
-        JLST_PUNTOS.updateUI();
-    }
-}
+                    // Actualizar las coordenadas del punto
+                    punto.setPx(puntoMatriz.getElemento(0));
+                    punto.setPy(puntoMatriz.getElemento(1));
+                }
+
+                // Actualizar la interfaz de usuario
+                JLST_PUNTOS.updateUI();
+            }
+        }   
 
     }//GEN-LAST:event_btnEscalarActionPerformed
 
@@ -1042,6 +1052,90 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnRotarActionPerformed
+
+    private void btnSesgarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSesgarActionPerformed
+        // TODO add your handling code here:
+        if(FiguraSeleccionada!=null){
+            if(cajaSesgar.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Debes llenar los dos campos");
+            }else{
+                float Sh = Float.valueOf(cajaSesgar.getText());
+                String tipo = (String) boxSesgo.getSelectedItem();
+                switch (tipo) {
+                    case "x":
+                        for (int i = 0; i < FiguraSeleccionada.getListaPuntos().getSize(); i++) {
+                            Punto elactual = FiguraSeleccionada.getListaPuntos().get(i);
+
+                            float x = elactual.getPx();
+                            float y = elactual.getPy();
+
+                            float[][] valores3x3 = {
+                                {1, Sh, 0},
+                                {0,  1, 0},
+                                {0,  0, 1}
+                            };
+
+                            float[] valores3x1 = {x, y, 1};
+                            Matriz33 m33 = new Matriz33(valores3x3);
+                            Matriz31 m31 = new Matriz31(valores3x1);
+
+                            float[] resultado = m33.multiMatrices(m31);
+                            System.out.println("Resultado de la multiplicación:");
+                            for (float valor : resultado) {
+                                System.out.println(valor);
+                            }
+
+                            elactual.setPx(resultado[0]);
+                            elactual.setPy(resultado[1]);
+                            JLST_PUNTOS.updateUI();
+
+                        }//for
+                        break;
+                    
+                    case "y":
+                        for (int i = 0; i < FiguraSeleccionada.getListaPuntos().getSize(); i++) {
+                            Punto elactual = FiguraSeleccionada.getListaPuntos().get(i);
+
+                            float x = elactual.getPx();
+                            float y = elactual.getPy();
+
+                            float[][] valores3x3 = {    
+                                {1, 0, 0},
+                                {Sh, 1, 0},
+                                {0, 0, 1}
+                            };
+
+                            float[] valores3x1 = {x, y, 1};
+                            Matriz33 m33 = new Matriz33(valores3x3);
+                            Matriz31 m31 = new Matriz31(valores3x1);
+
+                            float[] resultado = m33.multiMatrices(m31);
+                            System.out.println("Resultado de la multiplicación:");
+                            for (float valor : resultado) {
+                                System.out.println(valor);
+                            }
+
+                            elactual.setPx(resultado[0]);
+                            elactual.setPy(resultado[1]);
+                            JLST_PUNTOS.updateUI();
+
+                        }//for
+                        break;
+                    default:
+                        throw new AssertionError();
+                }//termina switch
+                
+                
+                 
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Debes seleccionar una figura");
+        }
+    }//GEN-LAST:event_btnSesgarActionPerformed
+
+    private void boxSesgoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxSesgoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxSesgoActionPerformed
     Canvas y;
 
  
@@ -1076,6 +1170,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VentanaPrincipal().setVisible(true);
+                
+                
+                
             }
         });
     }
