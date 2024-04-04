@@ -851,32 +851,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void guardarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarItemActionPerformed
         // TODO add your handling code here:
         String s = "";
-        
-        String path = System.getProperty("user.home")+ File.separator + "figurasG.txt";
-        for(int i=0; i < canvas.ListaFiguras.size(); i++){
-            Figura f = canvas.ListaFiguras.get(i);
-            s+=f.getNombre();
-            
-            for(int j=0; j< f.getListaPuntos().size(); j++){
-                Punto p = f.getListaPuntos().get(j);
-                        
-                s += "," + p.getPx() + "," + p.getPy();
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Guardar los cambios?");
+        if (opcion == JOptionPane.YES_OPTION) {
+            String path = System.getProperty("user.home") + File.separator + "figurasG.txt";
+            for (int i = 0; i < canvas.ListaFiguras.size(); i++) {
+                Figura f = canvas.ListaFiguras.get(i);
+                s += f.getNombre();
+
+                for (int j = 0; j < f.getListaPuntos().size(); j++) {
+                    Punto p = f.getListaPuntos().get(j);
+
+                    s += "," + p.getPx() + "," + p.getPy();
+                }
+                s += "\n";
             }
-            s += "\n";
+
+            System.out.println("El contendido del archivo será " + s);
+            JOptionPane.showMessageDialog(null,"Datos guardados");
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
+                writer.append(s);
+                writer.close();
+            } catch (IOException ioex) {
+                JOptionPane.showMessageDialog(this, "Error de IO" + ioex.getMessage());
+
+            }
         }
-            
-        System.out.println("El contendido del archivo será " +s);
-          
-        
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(path)))
-        {
-          writer.append(s);
-          writer.close();
-        } catch (IOException ioex) {
-            JOptionPane.showMessageDialog(this, "Error de IO" + ioex.getMessage());
-            
-        }
-            
+           
     }//GEN-LAST:event_guardarItemActionPerformed
 
     private void cargaInicio(){
