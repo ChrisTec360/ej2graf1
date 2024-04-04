@@ -658,7 +658,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Archivo");
 
-        guardarItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, 0));
+        guardarItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         guardarItem.setText("Guardar");
         guardarItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -667,7 +667,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(guardarItem);
 
-        cargarItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, 0));
+        cargarItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         cargarItem.setText("Cargar");
         cargarItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -851,7 +851,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void guardarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarItemActionPerformed
         // TODO add your handling code here:
         String s = "";
-
+        
         String path = System.getProperty("user.home")+ File.separator + "figurasG.txt";
         for(int i=0; i < canvas.ListaFiguras.size(); i++){
             Figura f = canvas.ListaFiguras.get(i);
@@ -879,6 +879,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
     }//GEN-LAST:event_guardarItemActionPerformed
 
+    private void cargaInicio(){
+        String path = System.getProperty("user.home") + File.separator + "figurasG.txt";
+
+        if (canvas.ListaFiguras.isEmpty()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+                String linea;
+                while ((linea = reader.readLine()) != null) {
+                    System.out.println(linea);
+                    String[] tokens = linea.split(","); //separar todo los eparado por coma
+
+                    Figura f = new Figura(tokens[0]);
+                    for (int i = 1; i < tokens.length; i += 2) {
+                        //
+                        float x = Floats.tryParse(tokens[i]);
+                        float y = Floats.tryParse(tokens[i + 1]);
+
+                        Punto p = new Punto(x, y);
+                        f.getListaPuntos().addElement(p);
+                    }
+                    canvas.ListaFiguras.addElement(f); //traemos el nombre de la figura
+
+                }
+
+            } catch (IOException iox) {
+                JOptionPane.showMessageDialog(null, "hola");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ya se cargaron los puntos");
+        }
+        
+    }
+    
     private void cargarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarItemActionPerformed
         // TODO add your handling code here:
         String path = System.getProperty("user.home")+ File.separator + "figurasG.txt";
@@ -1148,6 +1180,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -1169,10 +1202,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaPrincipal().setVisible(true);
-                
-                
-                
+                VentanaPrincipal v = new VentanaPrincipal();
+                v.cargaInicio();
+                v.setVisible(true);
+                //new VentanaPrincipal().setVisible(true);
             }
         });
     }
