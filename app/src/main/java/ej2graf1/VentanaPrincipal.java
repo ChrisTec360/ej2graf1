@@ -17,10 +17,12 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SpringLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 //import static sun.net.www.http.HttpClient.New;
 
 /**
@@ -161,6 +163,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         cajaSesgar = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        itemNuevo = new javax.swing.JMenuItem();
         guardarItem = new javax.swing.JMenuItem();
         cargarItem = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -657,6 +660,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Archivo");
+
+        itemNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        itemNuevo.setText("Nuevo");
+        itemNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemNuevoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemNuevo);
 
         guardarItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         guardarItem.setText("Guardar");
@@ -1168,6 +1180,49 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void boxSesgoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxSesgoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boxSesgoActionPerformed
+
+    private void itemNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemNuevoActionPerformed
+        // TODO add your handling code here:
+        // Obtener la ubicación predeterminada para guardar archivos del usuario
+        String path = System.getProperty("user.home");
+
+        // Mostrar un cuadro de diálogo para elegir la ruta y el nombre del archivo
+        JFileChooser fileChooser = new JFileChooser();
+
+        // Establecer un filtro para mostrar solo archivos con la extensión ".txt"
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de texto (*.txt)", "txt");
+        fileChooser.setFileFilter(filter);
+
+        int seleccion = fileChooser.showSaveDialog(null);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            // El usuario ha seleccionado una ubicación para guardar el archivo
+            File archivo = fileChooser.getSelectedFile();
+            path = archivo.getAbsolutePath();
+
+            // Verificar si el nombre de archivo tiene la extensión ".txt"
+            if (!path.toLowerCase().endsWith(".txt")) {
+                // Si no tiene la extensión ".txt", agregarla manualmente
+                archivo = new File(path + ".txt");
+            }
+
+            // Crear un nuevo archivo vacío
+            try {
+                if (!archivo.exists()) {
+                    if (!archivo.createNewFile()) {
+                        // No se pudo crear el archivo
+                        JOptionPane.showMessageDialog(null, "No se pudo crear el archivo.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            } catch (IOException ex) {
+                // Manejar cualquier excepción de E/S
+                JOptionPane.showMessageDialog(null, "Error al crear el archivo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else if (seleccion == JFileChooser.CANCEL_OPTION) {
+            // El usuario canceló la selección del archivo
+            System.out.println("Selección de archivo cancelada.");
+        }
+    }//GEN-LAST:event_itemNuevoActionPerformed
     Canvas y;
 
  
@@ -1236,6 +1291,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel controles;
     private javax.swing.JPanel escalado;
     private javax.swing.JMenuItem guardarItem;
+    private javax.swing.JMenuItem itemNuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
