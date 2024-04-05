@@ -843,13 +843,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
 
             // Imprimir la matriz resultante en la consola
-            System.out.println("Matriz resultante:");
-            for(int i = 0; i < valores3x3.length; i++) {
-                for(int j = 0; j < valores3x3[i].length; j++) {
-                    System.out.print(valores3x3[i][j] + " ");
-                }
-                System.out.println();
-            }
+            imprimirMatriz(m33.getMatriz());
+
+
 
             JLST_PUNTOS.updateUI(); 
         }
@@ -1047,7 +1043,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     punto.setPx(puntoMatriz.getElemento(0));
                     punto.setPy(puntoMatriz.getElemento(1));
                 }
-
+                imprimirMatriz(escala.getMatriz());
                 // Actualizar la interfaz de usuario
                 JLST_PUNTOS.updateUI();
             }
@@ -1113,6 +1109,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     punto.setPx(puntoMatriz.getElemento(0));
                     punto.setPy(puntoMatriz.getElemento(1));
                 }
+                imprimirMatriz(rotacion.getMatriz());
 
                 // Actualizar la interfaz de usuario
                 JLST_PUNTOS.updateUI();
@@ -1120,6 +1117,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRotarActionPerformed
 
+    public void imprimirMatriz(float[][] matriz) {
+        System.out.println("Matriz resultante:");
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
     private void btnSesgarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSesgarActionPerformed
         // TODO add your handling code here:
         if(FiguraSeleccionada!=null){
@@ -1151,7 +1157,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             for (float valor : resultado) {
                                 System.out.println(valor);
                             }
-
+                            imprimirMatriz(m33.getMatriz());
                             elactual.setPx(resultado[0]);
                             elactual.setPy(resultado[1]);
                             JLST_PUNTOS.updateUI();
@@ -1181,7 +1187,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             for (float valor : resultado) {
                                 System.out.println(valor);
                             }
-
+                            imprimirMatriz(m33.getMatriz());
                             elactual.setPx(resultado[0]);
                             elactual.setPy(resultado[1]);
                             JLST_PUNTOS.updateUI();
