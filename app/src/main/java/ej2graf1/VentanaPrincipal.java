@@ -23,6 +23,8 @@ import javax.swing.SpringLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.util.prefs.Preferences;
+
 //import static sun.net.www.http.HttpClient.New;
 
 /**
@@ -862,15 +864,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void guardarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarItemActionPerformed
         // TODO add your handling code here:
-    // Verificar si hay un archivo actual para guardar
-        if (rutaArchivoActual != null && !rutaArchivoActual.isEmpty()) {
+    
+        // Obtener la ruta del archivo actual
+        String path = rutaArchivoActual; 
+        
+        // Verificar si hay un archivo actual para guardar
+        if (path != null && !path.isEmpty()) {
             String s = "";
             int opcion = JOptionPane.showConfirmDialog(null, "¿Guardar los cambios?");
-            if (opcion == JOptionPane.YES_OPTION) {
-                // No necesitas obtener la ruta del archivo actual usando System.getProperty(), ya que ya tienes la ruta almacenada en la variable rutaArchivoActual
-                // String path = System.getProperty(rutaArchivoActual);
-                String path = rutaArchivoActual;
-
+            if (opcion == JOptionPane.YES_OPTION) {               
                 for (int i = 0; i < canvas.ListaFiguras.size(); i++) {
                     Figura f = canvas.ListaFiguras.get(i);
                     s += f.getNombre();
@@ -887,49 +889,55 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Datos guardados");
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
                     writer.append(s);
-                    writer.close();
                 } catch (IOException ioex) {
-                    JOptionPane.showMessageDialog(this, "Error de IO" + ioex.getMessage());
-
+                    JOptionPane.showMessageDialog(this, "Error de IO: " + ioex.getMessage());
                 }
             }
         } else {
             // Si no hay un archivo actual para guardar, mostrar un mensaje al usuario
             JOptionPane.showMessageDialog(null, "No hay un archivo actual para guardar.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-           
+        
+      
     }//GEN-LAST:event_guardarItemActionPerformed
 
-    private void cargaInicio(){
-        String path = System.getProperty("user.home") + File.separator + "figurasG.txt";
+    private void guardarRutaArchivoActual(String rutaArchivo) {
+        Preferences prefs = Preferences.userNodeForPackage(getClass());
+        prefs.put("rutaArchivoActual", rutaArchivo);
+    }
 
-        if (canvas.ListaFiguras.isEmpty()) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+    private void cargaInicio(){
+        // Obtener las preferencias del usuario
+        Preferences prefs = Preferences.userNodeForPackage(getClass());
+
+        // Recuperar la ruta del último archivo guardado de las preferencias del usuario
+        String rutaArchivoActual = prefs.get("rutaArchivoActual", null);
+
+        if (rutaArchivoActual != null) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivoActual))) {
                 String linea;
                 while ((linea = reader.readLine()) != null) {
                     System.out.println(linea);
-                    String[] tokens = linea.split(","); //separar todo los eparado por coma
+                    String[] tokens = linea.split(","); // Separar todo los separado por coma
 
                     Figura f = new Figura(tokens[0]);
                     for (int i = 1; i < tokens.length; i += 2) {
-                        //
                         float x = Floats.tryParse(tokens[i]);
                         float y = Floats.tryParse(tokens[i + 1]);
 
                         Punto p = new Punto(x, y);
                         f.getListaPuntos().addElement(p);
                     }
-                    canvas.ListaFiguras.addElement(f); //traemos el nombre de la figura
-
+                    canvas.ListaFiguras.addElement(f); // Traemos el nombre de la figura
                 }
-
             } catch (IOException iox) {
-                JOptionPane.showMessageDialog(null, "hola");
+                JOptionPane.showMessageDialog(null, "Error al cargar el archivo guardado.");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Ya se cargaron los puntos");
+            // Si no hay ninguna ruta de archivo guardada en las preferencias, podrías mostrar un mensaje o realizar alguna acción predeterminada
+            JOptionPane.showMessageDialog(null, "No se encontró ningún archivo guardado.");
         }
-        
+
     }
     
     private void cargarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarItemActionPerformed
@@ -944,6 +952,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             // Obtener el archivo seleccionado por el usuario
             File archivoSeleccionado = fileChooser.getSelectedFile();
 
+            // Establecer la ruta del archivo actual
+            rutaArchivoActual = archivoSeleccionado.getAbsolutePath();
+            
             try (BufferedReader reader = new BufferedReader(new FileReader(archivoSeleccionado))) {
                 String linea;
                 canvas.ListaFiguras.clear();
@@ -969,7 +980,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Error al cargar las figuras.");
             }
         }
-        
+        //Guardar la ruta del archivo actual en las preferencias
+        guardarRutaArchivoActual(rutaArchivoActual);
     }//GEN-LAST:event_cargarItemActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -1243,6 +1255,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 archivo = new File(path + ".txt");
             }
 
+            // Guardar la ruta del archivo en las preferencias del usuario
+            Preferences prefs = Preferences.userNodeForPackage(getClass());
+            prefs.put("rutaArchivoActual", archivo.getAbsolutePath());
+            
             // Crear un nuevo archivo vacío
             try {
                 if (!archivo.exists()) {
