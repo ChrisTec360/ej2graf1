@@ -813,53 +813,49 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btnTrasladarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrasladarActionPerformed
         // TODO add your handling code here:
-        if(FiguraSeleccionada!=null){
-            if(cajaTraslacionX.getText().isEmpty() || cajaTraslacionY.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Debes llenar los dos campos");
-            }else{
-                float Tx = Float.valueOf(cajaTraslacionX.getText());
-                float Ty = Float.valueOf(cajaTraslacionY.getText());
-                
-                for(int i=0; i< FiguraSeleccionada.getListaPuntos().getSize(); i++){
-                    Punto elactual = FiguraSeleccionada.getListaPuntos().get(i);
-                    
-                    float x = elactual.getPx();
-                    float y = elactual.getPy();
-                   
-                    float[][] valores3x3 = {
-                        {1, 0, Tx},
-                        {0, 1, Ty},
-                        {0, 0, 1}
-                    };
-                    
-                    float[] valores3x1 = {x,y,1};
-                    Matriz33 m33 = new Matriz33(valores3x3);
-                    Matriz31 m31 = new Matriz31(valores3x1);
-                    
-                    float[] resultado = m33.multiMatrices(m31);
-                    System.out.println("Resultado de la multiplicación:");
-                    for (float valor : resultado) {
-                        System.out.println(valor);
-                    }
-                    
-                    elactual.setPx(resultado[0]);
-                    elactual.setPy(resultado[1]);
-                    JLST_PUNTOS.updateUI(); 
-                    
+     if(FiguraSeleccionada!=null){
+        if(cajaTraslacionX.getText().isEmpty() || cajaTraslacionY.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debes llenar los dos campos");
+        } else {
+            float Tx = Float.parseFloat(cajaTraslacionX.getText());
+            float Ty = Float.parseFloat(cajaTraslacionY.getText());
 
-                    /*
-                    [1][0][Tx]   [x]
-                    [0][1][Ty] * [y]
-                    [0][0][1]    [1]
-                    */
-                    
-                    
-                }
-                 
+            float[][] valores3x3 = {
+                {1, 0, Tx},
+                {0, 1, Ty},
+                {0, 0, 1}
+            };
+
+            Matriz33 m33 = new Matriz33(valores3x3);
+
+            for(int i = 0; i < FiguraSeleccionada.getListaPuntos().getSize(); i++){
+                Punto elactual = FiguraSeleccionada.getListaPuntos().get(i);
+                float x = elactual.getPx();
+                float y = elactual.getPy();
+                
+                float[] valores3x1 = {x, y, 1};
+                Matriz31 m31 = new Matriz31(valores3x1);
+                
+                float[] resultado = m33.multiMatrices(m31);
+                
+                elactual.setPx(resultado[0]);
+                elactual.setPy(resultado[1]);
             }
-        }else{
-            JOptionPane.showMessageDialog(null, "Debes seleccionar una figura");
+
+            // Imprimir la matriz resultante en la consola
+            System.out.println("Matriz resultante:");
+            for(int i = 0; i < valores3x3.length; i++) {
+                for(int j = 0; j < valores3x3[i].length; j++) {
+                    System.out.print(valores3x3[i][j] + " ");
+                }
+                System.out.println();
+            }
+
+            JLST_PUNTOS.updateUI(); 
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Debes seleccionar una figura");
+    }
     }//GEN-LAST:event_btnTrasladarActionPerformed
 
     private void guardarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarItemActionPerformed
