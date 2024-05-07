@@ -116,7 +116,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         mantel = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
         plano = new javax.swing.JPanel();
+        mundo3d = new javax.swing.JPanel();
         controles = new javax.swing.JPanel();
         jSplitPane2 = new javax.swing.JSplitPane();
         panelFiguras = new javax.swing.JPanel();
@@ -182,7 +184,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         plano.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         plano.setLayout(new java.awt.GridLayout(1, 0));
-        jSplitPane1.setRightComponent(plano);
+        jTabbedPane2.addTab("2D", plano);
+
+        javax.swing.GroupLayout mundo3dLayout = new javax.swing.GroupLayout(mundo3d);
+        mundo3d.setLayout(mundo3dLayout);
+        mundo3dLayout.setHorizontalGroup(
+            mundo3dLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        mundo3dLayout.setVerticalGroup(
+            mundo3dLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.addTab("3D", mundo3d);
+
+        jSplitPane1.setRightComponent(jTabbedPane2);
 
         jSplitPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jSplitPane2.setDividerLocation(150);
@@ -650,7 +667,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             mantelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mantelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1099, Short.MAX_VALUE)
+                .addComponent(jSplitPane1)
                 .addContainerGap())
         );
         mantelLayout.setVerticalGroup(
@@ -1367,10 +1384,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel labelcajaTraslacionX;
     private javax.swing.JLabel labelcajaTraslacionY;
     private javax.swing.JPanel mantel;
+    private javax.swing.JPanel mundo3d;
     private javax.swing.JPanel panelFiguras;
     private javax.swing.JPanel panelModos;
     private javax.swing.JPanel panelPuntos;
