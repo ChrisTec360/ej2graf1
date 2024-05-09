@@ -8,14 +8,6 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import javax.swing.DefaultListModel;
-import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.VertexAttributes;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -43,9 +35,9 @@ public class Canvas implements ApplicationListener{
     public static int escala = 20;
     
     public DefaultListModel<Figura> ListaFiguras;
+    public DefaultListModel<Obj3D> ListaFiguras3D;
     
     VentanaPrincipal v;
-    //VentanaPrincipal vx = new VentanaPrincipal();
     
     SpriteBatch batch;
     BitmapFont font;
@@ -55,7 +47,6 @@ public class Canvas implements ApplicationListener{
     Environment env;
     ModelBatch batch3d;
     ModelBuilder builder3d;
-    
     PerspectiveCamera cam;
     CameraInputController caminput;
     
@@ -65,6 +56,7 @@ public class Canvas implements ApplicationListener{
     public Canvas(VentanaPrincipal padre) {
         this.v = padre;
         ListaFiguras = new DefaultListModel<>();
+        ListaFiguras3D = new DefaultListModel<>();
     }
     
     void inicializar2d(){
@@ -93,11 +85,21 @@ public class Canvas implements ApplicationListener{
 
         builder3d = new ModelBuilder();
 
+        ModelBuilder modelBuilder = new ModelBuilder();
+        Model model;
+        //String figuraSeleccionada = (String) v.Figuras3D.getSelectedItem();
+
+        model = modelBuilder.createBox(5f, 5f, 5f,
+                new Material(ColorAttribute.createDiffuse(Color.PINK)),
+                VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
+        m1instance = new ModelInstance(model);
+        
+        /*
         m1 = builder3d.createBox(5f, 5f, 5f, //Tamaño
                 new Material(ColorAttribute.createDiffuse(Color.GOLD)), //Color
                 VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
 
-        m1instance = new ModelInstance(m1);
+        m1instance = new ModelInstance(m1);*/
         
         caminput = new CameraInputController(cam);
         Gdx.input.setInputProcessor(caminput);
@@ -155,8 +157,41 @@ public class Canvas implements ApplicationListener{
         rend.end();
     }
 
-    void render3d()
+    void render3D()
     {
+         //Limpiar con color de fondo.       
+        Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+
+        if (v.botonArriba.getModel().isPressed()) {
+            cam.position.y += 0.1f;
+        } else if (v.botonAbajo.getModel().isPressed()) {
+            cam.position.y += -0.1f;
+        } else if (v.botonIzquierda.getModel().isPressed()) {
+            cam.position.x += -0.1f;
+        } else if (v.botonDerecha.getModel().isPressed()) {
+            cam.position.x += 0.1f;
+        } else if (v.botonAdelante.getModel().isPressed()) {
+            cam.position.z += -0.1f;
+        } else if (v.botonAtras.getModel().isPressed()) {
+            cam.position.z += 0.1f;
+        }
+
+        cam.update();
+        caminput.update();
+
+        batch3d.begin(cam);
+        for (int i = 0; i < ListaFiguras3D.size(); i++) {
+            Obj3D objeto = ListaFiguras3D.get(i);
+            if(objeto.model== null | objeto.instance==null){
+                objeto.InicializarModel();
+            }
+            objeto.dibujar(batch3d, env);
+        }
+        batch3d.end();
+
+        
+        /*
         //Limpiar con color de fondo.       
         Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
@@ -167,14 +202,15 @@ public class Canvas implements ApplicationListener{
         batch3d.begin(cam);
         batch3d.render(m1instance,env);
         batch3d.end();
-    }
+*/    
+}
     
     @Override
     public void render(){
         if(v.radio2D.isSelected()){
             render2d();
         }else{
-            render3d();            
+            render3D();            
         }
     }
     

@@ -6,6 +6,7 @@ package ej2graf1;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglAWTCanvas;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.google.common.primitives.Floats;
 import com.google.common.primitives.Ints;
 import java.awt.Color;
@@ -25,6 +26,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.util.prefs.Preferences;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JColorChooser;
 
 //import static sun.net.www.http.HttpClient.New;
@@ -39,7 +41,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private String rutaArchivoActual = null;
     private Figura FiguraSeleccionada = null;
     private Punto puntoSeleccionado = null;
-
+    private Obj3D select3D = null;
     
     
     /**
@@ -72,6 +74,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
+        Figuras3D.setModel(new DefaultComboBoxModel<tipoPrimitiva>(tipoPrimitiva.values()));
         grupoRadios.add(radio2D);
         grupoRadios.add(radio3D);
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
@@ -85,6 +88,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         plano.add(awtcanvas.getCanvas());
         
         JLSTFiguras.setModel(canvas.ListaFiguras);
+        lista3D.setModel(canvas.ListaFiguras3D);
         
         
         JLSTFiguras.addListSelectionListener(new ListSelectionListener()
@@ -105,6 +109,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 setPuntoSeleccionado(JLST_PUNTOS.getSelectedValue());
+                //System.out.println(JLST_PUNTOS.getSelectedValue().toString());
+            }
+        });
+        
+        
+        lista3D.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                select3D = lista3D.getSelectedValue();
                 //System.out.println(JLST_PUNTOS.getSelectedValue().toString());
             }
         });
@@ -186,16 +199,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ejeX = new javax.swing.JTextField();
         ejeY = new javax.swing.JTextField();
         ejeZ = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         btnAgregarFig3D = new ej2graf1.MiButton();
         btnEliminarFig3D = new ej2graf1.MiButton();
         btnEliminarFig3D1 = new ej2graf1.MiButton();
+        botonAtras = new ej2graf1.MiButton();
+        jLabel18 = new javax.swing.JLabel();
+        botonAdelante = new ej2graf1.MiButton();
+        botonIzquierda = new ej2graf1.MiButton();
+        botonDerecha = new ej2graf1.MiButton();
+        botonArriba = new ej2graf1.MiButton();
+        botonAbajo = new ej2graf1.MiButton();
         radio2D = new javax.swing.JRadioButton();
         radio3D = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -684,7 +697,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jScrollPane3.setViewportView(lista3D);
 
-        Figuras3D.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cubo", "Esfera", "Cono", "Cilindro" }));
+        Figuras3D.setToolTipText("figuras");
 
         jLabel8.setText("Tamaño");
 
@@ -703,14 +716,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel12.setText("Y:");
 
         jLabel13.setText("X:");
-
-        jLabel14.setText("Posicion");
-
-        jLabel15.setText("x:");
-
-        jLabel16.setText("y:");
-
-        jLabel17.setText("z:");
 
         btnAgregarFig3D.setText("Agregar");
         btnAgregarFig3D.setColorNormal(new java.awt.Color(0, 255, 0));
@@ -749,6 +754,74 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botonAtras.setText("Atrás");
+        botonAtras.setColorNormal(new java.awt.Color(0, 255, 0));
+        botonAtras.setColorTextHover(new java.awt.Color(0, 0, 0));
+        botonAtras.setColorTextPressed(new java.awt.Color(0, 0, 0));
+        botonAtras.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAtrasActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setText("MOVER");
+
+        botonAdelante.setText("Adelante");
+        botonAdelante.setColorNormal(new java.awt.Color(0, 255, 0));
+        botonAdelante.setColorTextHover(new java.awt.Color(0, 0, 0));
+        botonAdelante.setColorTextPressed(new java.awt.Color(0, 0, 0));
+        botonAdelante.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botonAdelante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAdelanteActionPerformed(evt);
+            }
+        });
+
+        botonIzquierda.setText("Izquierda");
+        botonIzquierda.setColorNormal(new java.awt.Color(0, 255, 0));
+        botonIzquierda.setColorTextHover(new java.awt.Color(0, 0, 0));
+        botonIzquierda.setColorTextPressed(new java.awt.Color(0, 0, 0));
+        botonIzquierda.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botonIzquierda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonIzquierdaActionPerformed(evt);
+            }
+        });
+
+        botonDerecha.setText("Derecha");
+        botonDerecha.setColorNormal(new java.awt.Color(0, 255, 0));
+        botonDerecha.setColorTextHover(new java.awt.Color(0, 0, 0));
+        botonDerecha.setColorTextPressed(new java.awt.Color(0, 0, 0));
+        botonDerecha.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botonDerecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDerechaActionPerformed(evt);
+            }
+        });
+
+        botonArriba.setText("Arriba");
+        botonArriba.setColorNormal(new java.awt.Color(0, 255, 0));
+        botonArriba.setColorTextHover(new java.awt.Color(0, 0, 0));
+        botonArriba.setColorTextPressed(new java.awt.Color(0, 0, 0));
+        botonArriba.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botonArriba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonArribaActionPerformed(evt);
+            }
+        });
+
+        botonAbajo.setText("Abajo");
+        botonAbajo.setColorNormal(new java.awt.Color(0, 255, 0));
+        botonAbajo.setColorTextHover(new java.awt.Color(0, 0, 0));
+        botonAbajo.setColorTextPressed(new java.awt.Color(0, 0, 0));
+        botonAbajo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botonAbajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAbajoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -756,53 +829,52 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(nombreFig3D, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel12)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(ejeY))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel11)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(ejeZ))))
+                        .addComponent(jLabel10)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnAgregarFig3D, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnEliminarFig3D1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel9)
+                                .addComponent(Figuras3D, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(86, 86, 86)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel8)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel13)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(ejeX, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(jLabel18)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(botonAdelante, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnEliminarFig3D, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(13, 13, 13))
+                            .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel17)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel10)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(nombreFig3D, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel12)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(ejeY, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel11)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(ejeZ))))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel9)
-                                        .addComponent(Figuras3D, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(86, 86, 86)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel13)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(ejeX, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jLabel8)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(btnAgregarFig3D, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnEliminarFig3D1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel14)
-                            .addComponent(btnEliminarFig3D, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(botonIzquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonDerecha, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(botonArriba, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonAbajo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -831,23 +903,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(nombreFig3D, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(ejeZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14)
-                .addGap(18, 18, 18)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarFig3D, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminarFig3D1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEliminarFig3D, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel17))
-                .addGap(26, 26, 26))
+                .addGap(10, 10, 10)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botonAdelante, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botonArriba, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonAbajo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botonIzquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonDerecha, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(54, 54, 54))
         );
 
         javax.swing.GroupLayout ctrls3dLayout = new javax.swing.GroupLayout(ctrls3d);
@@ -870,7 +948,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         tabControles.addTab("3D Ctrls", ctrls3d);
@@ -1533,13 +1611,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void nombreFig3DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreFig3DActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreFig3DActionPerformed
-
+    ModelBuilder MoB = new ModelBuilder();
     private void btnAgregarFig3DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarFig3DActionPerformed
         // TODO add your handling code here:
+        if(nombreFig3D.getText().isEmpty() ||
+                ejeX.getText().isEmpty() ||
+                ejeY.getText().isEmpty() ||
+                ejeZ.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Rellena todos los campos");
+        }else{
+            String nombfig = nombreFig3D.getText();
+            float x = Float.parseFloat(ejeX.getText());
+            float y = Float.parseFloat(ejeY.getText());
+            float z = Float.parseFloat(ejeZ.getText());
+
+            float r = c.getRed() / 255f;
+            float g = c.getGreen() / 255f;
+            float b = c.getBlue() / 255f;
+            float a = c.getAlpha() / 255f;
+
+            com.badlogic.gdx.graphics.Color nuevoCol = new com.badlogic.gdx.graphics.Color(r, g, b, a);
+            tipoPrimitiva tipo1 = (tipoPrimitiva) Figuras3D.getSelectedItem();
+
+            canvas.ListaFiguras3D.addElement(new Obj3D(nombfig, tipo1, nuevoCol, x, y, z, MoB));    
+        }
+        
     }//GEN-LAST:event_btnAgregarFig3DActionPerformed
 
     private void btnEliminarFig3DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarFig3DActionPerformed
         // TODO add your handling code here:
+        canvas.ListaFiguras3D.removeElement(select3D);
     }//GEN-LAST:event_btnEliminarFig3DActionPerformed
 
     Color c;
@@ -1547,6 +1648,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         c = JColorChooser.showDialog(this, "Seleccionar color", Color.WHITE);
     }//GEN-LAST:event_btnEliminarFig3D1ActionPerformed
+
+    private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAtrasActionPerformed
+
+    private void botonAdelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAdelanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAdelanteActionPerformed
+
+    private void botonIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIzquierdaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonIzquierdaActionPerformed
+
+    private void botonDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDerechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonDerechaActionPerformed
+
+    private void botonArribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonArribaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonArribaActionPerformed
+
+    private void botonAbajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAbajoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAbajoActionPerformed
     Canvas y;
 
  
@@ -1590,9 +1715,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Figuras3D;
+    public javax.swing.JComboBox<tipoPrimitiva> Figuras3D;
     private javax.swing.JList<Figura> JLSTFiguras;
     private javax.swing.JList<Punto> JLST_PUNTOS;
+    public ej2graf1.MiButton botonAbajo;
+    public ej2graf1.MiButton botonAdelante;
+    public ej2graf1.MiButton botonArriba;
+    public ej2graf1.MiButton botonAtras;
+    public ej2graf1.MiButton botonDerecha;
+    public ej2graf1.MiButton botonIzquierda;
     private javax.swing.JComboBox<String> boxSesgo;
     private ej2graf1.MiButton btnAgregarFig;
     private ej2graf1.MiButton btnAgregarFig3D;
@@ -1630,10 +1761,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1652,15 +1780,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel labelcajaTraslacionX;
     private javax.swing.JLabel labelcajaTraslacionY;
-    private javax.swing.JList<Figura> lista3D;
+    private javax.swing.JList<Obj3D> lista3D;
     private javax.swing.JPanel mantel;
     private javax.swing.JTextField nombreFig3D;
     private javax.swing.JPanel panelFiguras;

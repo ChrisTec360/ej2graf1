@@ -96,8 +96,5 @@ public class Obj3D implements Disposable{
     public String toString(){
         return Nombre;
     }
-    
-    
-    
-    
+       
 }
