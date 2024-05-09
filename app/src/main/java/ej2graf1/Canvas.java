@@ -45,7 +45,7 @@ public class Canvas implements ApplicationListener{
     public DefaultListModel<Figura> ListaFiguras;
     
     VentanaPrincipal v;
-    VentanaPrincipal vx = new VentanaPrincipal();
+    //VentanaPrincipal vx = new VentanaPrincipal();
     
     SpriteBatch batch;
     BitmapFont font;
@@ -59,8 +59,8 @@ public class Canvas implements ApplicationListener{
     PerspectiveCamera cam;
     CameraInputController caminput;
     
-    Model m1;
-    ModelInstance m1instance;
+    Model m1, m2;
+    ModelInstance m1instance, m2instance;
     
     public Canvas(VentanaPrincipal padre) {
         this.v = padre;
@@ -98,7 +98,13 @@ public class Canvas implements ApplicationListener{
                 VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
 
         m1instance = new ModelInstance(m1);
-
+        
+        m2 = builder3d.createCone(6f, 6f, 4f, 3,
+                new Material(ColorAttribute.createDiffuse(Color.RED)),
+                VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
+        
+        m2instance = new ModelInstance(m2);
+        
         caminput = new CameraInputController(cam);
         Gdx.input.setInputProcessor(caminput);
     }
@@ -171,7 +177,7 @@ public class Canvas implements ApplicationListener{
     
     @Override
     public void render(){
-        render2d();
+            render2d();
             render3d();            
         
     }
