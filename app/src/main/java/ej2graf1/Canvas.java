@@ -99,12 +99,6 @@ public class Canvas implements ApplicationListener{
 
         m1instance = new ModelInstance(m1);
         
-        m2 = builder3d.createCone(6f, 6f, 4f, 3,
-                new Material(ColorAttribute.createDiffuse(Color.RED)),
-                VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
-        
-        m2instance = new ModelInstance(m2);
-        
         caminput = new CameraInputController(cam);
         Gdx.input.setInputProcessor(caminput);
     }
@@ -177,9 +171,11 @@ public class Canvas implements ApplicationListener{
     
     @Override
     public void render(){
+        if(v.radio2D.isSelected()){
             render2d();
+        }else{
             render3d();            
-        
+        }
     }
     
     @Override

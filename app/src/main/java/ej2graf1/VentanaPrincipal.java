@@ -1595,8 +1595,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelModos;
     private javax.swing.JPanel panelPuntos;
     private javax.swing.JPanel plano;
-    private javax.swing.JRadioButton radio2D;
-    private javax.swing.JRadioButton radio3D;
+    public javax.swing.JRadioButton radio2D;
+    public javax.swing.JRadioButton radio3D;
     private javax.swing.JPanel rotacion;
     private javax.swing.JPanel sesgo;
     private javax.swing.JTabbedPane tab;
