@@ -1278,13 +1278,13 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Eliminar"/>
                             <Property name="colorNormal" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="ff" red="0" type="rgb"/>
+                              <Color blue="33" green="33" red="ff" type="rgb"/>
                             </Property>
                             <Property name="colorTextHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="colorTextPressed" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Tahoma" size="12" style="1"/>

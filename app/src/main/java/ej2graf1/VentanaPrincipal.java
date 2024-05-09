@@ -730,9 +730,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         btnEliminarFig3D.setBackground(new java.awt.Color(255, 51, 51));
         btnEliminarFig3D.setText("Eliminar");
-        btnEliminarFig3D.setColorNormal(new java.awt.Color(0, 255, 0));
-        btnEliminarFig3D.setColorTextHover(new java.awt.Color(0, 0, 0));
-        btnEliminarFig3D.setColorTextPressed(new java.awt.Color(0, 0, 0));
+        btnEliminarFig3D.setColorNormal(new java.awt.Color(255, 51, 51));
+        btnEliminarFig3D.setColorTextHover(new java.awt.Color(255, 255, 255));
+        btnEliminarFig3D.setColorTextPressed(new java.awt.Color(255, 255, 255));
         btnEliminarFig3D.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnEliminarFig3D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
