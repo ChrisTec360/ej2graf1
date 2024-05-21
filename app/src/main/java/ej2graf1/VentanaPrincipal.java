@@ -137,7 +137,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jSplitPane1 = new javax.swing.JSplitPane();
         tabbedMundos = new javax.swing.JTabbedPane();
         plano = new javax.swing.JPanel();
-        tabControles = new javax.swing.JTabbedPane();
+        tabAnimacion = new javax.swing.JTabbedPane();
         controles = new javax.swing.JPanel();
         jSplitPane2 = new javax.swing.JSplitPane();
         panelFiguras = new javax.swing.JPanel();
@@ -209,6 +209,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonDerecha = new ej2graf1.MiButton();
         botonArriba = new ej2graf1.MiButton();
         botonAbajo = new ej2graf1.MiButton();
+        jPanel2 = new javax.swing.JPanel();
+        btnPlay = new ej2graf1.MiButton();
+        jButton1 = new javax.swing.JButton();
+        btnSiguiente = new javax.swing.JButton();
+        SliderTiempo = new javax.swing.JSlider();
+        LBL_Tiempo = new javax.swing.JLabel();
+        JLST_Keyframes = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         radio2D = new javax.swing.JRadioButton();
         radio3D = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -693,7 +708,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        tabControles.addTab("2D Ctrls", controles);
+        tabAnimacion.addTab("2D Ctrls", controles);
 
         jScrollPane3.setViewportView(lista3D);
 
@@ -960,9 +975,146 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        tabControles.addTab("3D Ctrls", ctrls3d);
+        tabAnimacion.addTab("3D Ctrls", ctrls3d);
 
-        jSplitPane1.setLeftComponent(tabControles);
+        btnPlay.setText("Play");
+        btnPlay.setColorNormal(new java.awt.Color(0, 255, 0));
+        btnPlay.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnPlay.setColorTextPressed(new java.awt.Color(0, 0, 0));
+        btnPlay.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnPlay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlayActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("<");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        btnSiguiente.setText(">");
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteActionPerformed(evt);
+            }
+        });
+
+        SliderTiempo.setMaximum(3600);
+        SliderTiempo.setValue(0);
+
+        LBL_Tiempo.setText("jLabel14");
+
+        JLST_Keyframes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel14.setText("Transformaciones");
+
+        jLabel15.setText("Param. 1:");
+
+        jLabel16.setText("Param. 2:");
+
+        jTextField1.setText("jTextField1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.setText("jTextField2");
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(jList1);
+
+        javax.swing.GroupLayout JLST_KeyframesLayout = new javax.swing.GroupLayout(JLST_Keyframes);
+        JLST_Keyframes.setLayout(JLST_KeyframesLayout);
+        JLST_KeyframesLayout.setHorizontalGroup(
+            JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JLST_KeyframesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(JLST_KeyframesLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel16))
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(88, 88, 88))
+        );
+        JLST_KeyframesLayout.setVerticalGroup(
+            JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JLST_KeyframesLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SliderTiempo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSiguiente))
+                            .addComponent(LBL_Tiempo))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(JLST_Keyframes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(btnSiguiente))
+                .addGap(18, 18, 18)
+                .addComponent(SliderTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LBL_Tiempo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JLST_Keyframes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(195, Short.MAX_VALUE))
+        );
+
+        tabAnimacion.addTab("Animación", jPanel2);
+
+        jSplitPane1.setLeftComponent(tabAnimacion);
 
         radio2D.setSelected(true);
         radio2D.setText("2D");
@@ -1681,6 +1833,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void botonAbajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAbajoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonAbajoActionPerformed
+
+    private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
+        canvas.Reproduciendo = !(canvas.Reproduciendo);
+        
+        if(canvas.Reproduciendo){
+            btnPlay.setText("Pause");
+        }else{
+            btnPlay.setText("Play");
+        }
+    }//GEN-LAST:event_btnPlayActionPerformed
+
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+        canvas.fotogramaSiguiente();
+    }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        canvas.fotogramaAnterior();
+    }//GEN-LAST:event_jButton1ActionPerformed
     Canvas y;
 
  
@@ -1726,7 +1901,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<tipoPrimitiva> Figuras3D;
     private javax.swing.JList<Figura> JLSTFiguras;
+    private javax.swing.JPanel JLST_Keyframes;
     private javax.swing.JList<Punto> JLST_PUNTOS;
+    public javax.swing.JLabel LBL_Tiempo;
+    public javax.swing.JSlider SliderTiempo;
     public ej2graf1.MiButton botonAbajo;
     public ej2graf1.MiButton botonAdelante;
     public ej2graf1.MiButton botonArriba;
@@ -1744,8 +1922,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ej2graf1.MiButton btnEliminarFig3D1;
     private ej2graf1.MiButton btnEliminarPunto;
     private ej2graf1.MiButton btnEscalar;
+    public ej2graf1.MiButton btnPlay;
     private ej2graf1.MiButton btnRotar;
     private ej2graf1.MiButton btnSesgar;
+    private javax.swing.JButton btnSiguiente;
     private ej2graf1.MiButton btnTrasladar;
     private javax.swing.JTextField cajaEscalarX;
     private javax.swing.JTextField cajaEscalarY;
@@ -1765,11 +1945,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.ButtonGroup grupoRadios;
     private javax.swing.JMenuItem guardarItem;
     private javax.swing.JMenuItem itemNuevo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1779,18 +1964,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel labelcajaTraslacionX;
     private javax.swing.JLabel labelcajaTraslacionY;
@@ -1806,7 +1996,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel rotacion;
     private javax.swing.JPanel sesgo;
     private javax.swing.JTabbedPane tab;
-    private javax.swing.JTabbedPane tabControles;
+    private javax.swing.JTabbedPane tabAnimacion;
     private javax.swing.JTabbedPane tabbedMundos;
     private javax.swing.JTextField textEscala;
     private javax.swing.JPanel traslacion;

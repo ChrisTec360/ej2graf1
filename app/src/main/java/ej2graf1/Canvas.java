@@ -43,21 +43,29 @@ public class Canvas implements ApplicationListener{
     public boolean Reproduciendo = false;
     
     public void fotogramaAnterior(){
-        fotograma_actual--;
+        setFotograma(fotograma_actual-1);
         
         actualizarEtiquetaTiempo();
     }
     public void fotogramaSiguiente(){
-        fotograma_actual++;
+        setFotograma(fotograma_actual+1);
         
         actualizarEtiquetaTiempo();
+        actualizarSlider();
     }
     
     void actualizarEtiquetaTiempo(){
         v.LBL_Tiempo.setText(fotograma_actual + "/" + MAX_FOTOGRAMAS);
     }
     
+    void actualizarSlider(){
+       v.SliderTiempo.setValue(fotograma_actual);
+    }
     
+    public void setFotograma(int valor){
+        fotograma_actual = valor;
+        actualizarEtiquetaTiempo();
+    }
     
     
     //ANIMACION///
@@ -143,6 +151,10 @@ public class Canvas implements ApplicationListener{
 
     
     void render2d() {
+        if(Reproduciendo){
+            fotogramaSiguiente();
+        }
+
         //Limpiar con color de fondo.
         Gdx.gl.glClearColor(0.25f, .25f, .25f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
