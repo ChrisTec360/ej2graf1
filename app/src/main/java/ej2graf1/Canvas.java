@@ -37,6 +37,30 @@ public class Canvas implements ApplicationListener{
     public DefaultListModel<Figura> ListaFiguras;
     public DefaultListModel<Obj3D> ListaFiguras3D;
     
+    //animación
+    public final int MAX_FOTOGRAMAS = 3600;
+    int fotograma_actual = 0;
+    public boolean Reproduciendo = false;
+    
+    public void fotogramaAnterior(){
+        fotograma_actual--;
+        
+        actualizarEtiquetaTiempo();
+    }
+    public void fotogramaSiguiente(){
+        fotograma_actual++;
+        
+        actualizarEtiquetaTiempo();
+    }
+    
+    void actualizarEtiquetaTiempo(){
+        v.LBL_Tiempo.setText(fotograma_actual + "/" + MAX_FOTOGRAMAS);
+    }
+    
+    
+    
+    
+    //ANIMACION///
     VentanaPrincipal v;
     
     SpriteBatch batch;
