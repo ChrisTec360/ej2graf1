@@ -1032,7 +1032,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="193" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jPanel1" min="-2" pref="405" max="-2" attributes="0"/>
                               <EmptySpace pref="44" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -1066,54 +1066,57 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="nombreFig3D" min="-2" pref="137" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="ejeY" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="ejeZ" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="Figuras3D" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Component id="btnEliminarFig3D1" min="-2" pref="89" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="nombreFig3D" min="-2" pref="137" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="ejeZ" min="-2" pref="88" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                          <Component id="ejeX" min="-2" pref="88" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                          <Component id="ejeY" min="-2" pref="88" max="-2" attributes="0"/>
+                                                      </Group>
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
                                               <Component id="btnAgregarFig3D" min="-2" pref="89" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btnEliminarFig3D1" min="-2" pref="89" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="Figuras3D" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="ejeX" min="-2" pref="88" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnEliminarFig3D" min="-2" pref="89" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="botonAdelante" min="-2" pref="75" max="-2" attributes="0"/>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="btnEliminarFig3D" min="-2" pref="89" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="jLabel18" alignment="0" max="32767" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Component id="botonAdelante" min="-2" pref="75" max="-2" attributes="0"/>
+                                                      <Component id="botonAtras" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
-                                              <Component id="botonAtras" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
@@ -1127,7 +1130,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                                  <EmptySpace pref="28" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1140,43 +1143,43 @@
                                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="Figuras3D" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="nombreFig3D" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="ejeX" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="ejeY" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="ejeZ" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnEliminarFig3D1" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="nombreFig3D" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ejeZ" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnEliminarFig3D" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                                       <Component id="btnAgregarFig3D" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                                      <Component id="btnEliminarFig3D1" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="btnEliminarFig3D" min="-2" pref="29" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="9" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="botonAdelante" min="-2" pref="29" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="botonAtras" min="-2" pref="29" max="-2" attributes="0"/>
@@ -1186,13 +1189,13 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="botonAbajo" min="-2" pref="29" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="botonIzquierda" min="-2" pref="29" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="botonDerecha" min="-2" pref="29" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1212,16 +1215,25 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel8">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI" size="14" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Tama&#xf1;o"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel9">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI" size="14" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Figura"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel10">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI" size="14" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Nombre"/>
                           </Properties>
                         </Component>
@@ -1232,16 +1244,25 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel11">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI" size="14" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Z:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel12">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI" size="14" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Y:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel13">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI" size="14" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="X:"/>
                           </Properties>
                         </Component>
@@ -1348,7 +1369,10 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel18">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="MOVER"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI" size="14" style="1"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="MOVER C&#xc1;MARA"/>
                           </Properties>
                         </Component>
                         <Component class="ej2graf1.MiButton" name="botonAdelante">
