@@ -18,13 +18,17 @@ public class Figura {
     public DefaultListModel<Keyframe> listakeyframes;
     Canvas c;
     
-    
+    public Keyframe getkeyframeInicial(){
+        return listakeyframes.get(0);
+    }
    
     public Figura(String nombre) {
         this.nombre = nombre;
         
         listakeyframes = new DefaultListModel<>(); //creamos 
-        Keyframe KeyframeInicial  = new Keyframe(0, transformacionKeyframe.NINGUNO, this, new float[2]);
+        float[] par = {0,0};
+        Keyframe KeyframeInicial  = new Keyframe(0, transformacionKeyframe.NINGUNO, this, par);
+        listakeyframes.addElement(KeyframeInicial);
     }
     
     /**
