@@ -36,6 +36,7 @@ public class Canvas implements ApplicationListener{
     
     public DefaultListModel<Figura> ListaFiguras;
     public DefaultListModel<Obj3D> ListaFiguras3D;
+    public DefaultListModel<Keyframe> listaKeyFrame;
     
     //animación
     public final int MAX_FOTOGRAMAS = 3600;
@@ -55,6 +56,9 @@ public class Canvas implements ApplicationListener{
     }
     
     void actualizarEtiquetaTiempo(){
+        int minutos = (int)(fotograma_actual / 3600);
+       // int segundos (int)(minutos + ":" + segundos + "/" + fotograma_actual);
+        
         v.LBL_Tiempo.setText(fotograma_actual + "/" + MAX_FOTOGRAMAS);
     }
     

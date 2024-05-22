@@ -15,12 +15,16 @@ import javax.swing.DefaultListModel;
 public class Figura {
     private String nombre;
     public int escale=20;
+    public DefaultListModel<Keyframe> listakeyframes;
     Canvas c;
     
-    private DefaultListModel<Punto> listaPuntos;
+    
    
     public Figura(String nombre) {
         this.nombre = nombre;
+        
+        listakeyframes = new DefaultListModel<>(); //creamos 
+        Keyframe KeyframeInicial  = new Keyframe(0, transformacionKeyframe.NINGUNO, this, new float[2]);
     }
     
     /**

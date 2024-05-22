@@ -4,13 +4,27 @@
  */
 package ej2graf1;
 
+import javax.swing.DefaultListModel;
+
+enum transformacionKeyframe {
+    NINGUNO, TRASLACIÓN, ESCALADO, ROTACIÓN, SESGADO_X, SESGADO_Y
+}
+
 public class Keyframe {
     int num_fotograma;
     Figura figura;
-    float[] param = new float[2];
+    transformacionKeyframe transformacion = transformacionKeyframe.NINGUNO;
     
-    public Keyframe(){
+    float[] param = new float[2];
+    private DefaultListModel<Punto> listaPuntos;
+    
+    public Keyframe(int num_fot, transformacionKeyframe transf, Figura figura, float[] par){
+        this.num_fotograma = num_fot;
+        this.transformacion = transf;
+        this.figura = figura;
+        this.param = par;
         
+        listaPuntos = new DefaultListModel<>();
     }
     
     @Override
