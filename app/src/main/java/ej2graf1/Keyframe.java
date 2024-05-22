@@ -4,10 +4,17 @@
  */
 package ej2graf1;
 
-/**
- *
- * @author Chris
- */
 public class Keyframe {
+    int num_fotograma;
+    Figura figura;
+    float[] param = new float[2];
     
+    public Keyframe(){
+        
+    }
+    
+    @Override
+    public String toString(){
+        return num_fotograma + ": "+ figura.getNombre() + "; "+ param[0] + param[1];
+    }
 }
