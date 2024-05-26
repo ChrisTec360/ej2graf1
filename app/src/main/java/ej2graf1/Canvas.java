@@ -36,7 +36,6 @@ public class Canvas implements ApplicationListener{
     
     public DefaultListModel<Figura> ListaFiguras;
     public DefaultListModel<Obj3D> ListaFiguras3D;
-    public DefaultListModel<Keyframe> listaKeyFrame;
     
     //animación
     public final int MAX_FOTOGRAMAS = 3600;
