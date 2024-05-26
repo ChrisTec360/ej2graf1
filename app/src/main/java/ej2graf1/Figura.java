@@ -98,7 +98,22 @@ public class Figura {
     /**
      * @return the listaPuntos
      */
+    public DefaultListModel<Punto> getListaPuntos() {
+        
+        if(listaPuntos == null)
+        {
+            listaPuntos = new DefaultListModel<>();
+        }
+        
+        return listaPuntos;
+    }
 
+    /**
+     * @param listaPuntos the listaPuntos to set
+     */
+    public void setListaPuntos(DefaultListModel<Punto> listaPuntos) {
+        this.listaPuntos = listaPuntos;
+    }
 
     @Override
     public String toString() {

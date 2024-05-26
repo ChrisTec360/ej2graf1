@@ -224,6 +224,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        btnAgregarFrame = new ej2graf1.MiButton();
+        btnEditarFrame = new ej2graf1.MiButton();
+        btnEliminarFrame = new ej2graf1.MiButton();
         jLabel17 = new javax.swing.JLabel();
         radio2D = new javax.swing.JRadioButton();
         radio3D = new javax.swing.JRadioButton();
@@ -1032,32 +1035,75 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jScrollPane4.setViewportView(jList1);
 
+        btnAgregarFrame.setText("Agregar");
+        btnAgregarFrame.setColorNormal(new java.awt.Color(0, 255, 0));
+        btnAgregarFrame.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnAgregarFrame.setColorTextPressed(new java.awt.Color(0, 0, 0));
+        btnAgregarFrame.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAgregarFrame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarFrameActionPerformed(evt);
+            }
+        });
+
+        btnEditarFrame.setBackground(new java.awt.Color(204, 102, 0));
+        btnEditarFrame.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarFrame.setText("Editar");
+        btnEditarFrame.setColorNormal(new java.awt.Color(255, 102, 0));
+        btnEditarFrame.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnEditarFrame.setColorTextPressed(new java.awt.Color(0, 0, 0));
+        btnEditarFrame.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnEditarFrame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarFrameActionPerformed(evt);
+            }
+        });
+
+        btnEliminarFrame.setBackground(new java.awt.Color(255, 51, 51));
+        btnEliminarFrame.setText("Eliminar");
+        btnEliminarFrame.setColorNormal(new java.awt.Color(204, 0, 0));
+        btnEliminarFrame.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnEliminarFrame.setColorTextPressed(new java.awt.Color(0, 0, 0));
+        btnEliminarFrame.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnEliminarFrame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarFrameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JLST_KeyframesLayout = new javax.swing.GroupLayout(JLST_Keyframes);
         JLST_Keyframes.setLayout(JLST_KeyframesLayout);
         JLST_KeyframesLayout.setHorizontalGroup(
             JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JLST_KeyframesLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JLST_KeyframesLayout.createSequentialGroup()
+                        .addComponent(btnAgregarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addComponent(btnEditarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel14)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JLST_KeyframesLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                    .addComponent(jTextField2))
-                .addGap(88, 88, 88))
+                        .addComponent(btnEliminarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(JLST_KeyframesLayout.createSequentialGroup()
+                        .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JLST_KeyframesLayout.createSequentialGroup()
+                                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel14))
+                                .addGap(26, 26, 26)
+                                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         JLST_KeyframesLayout.setVerticalGroup(
             JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JLST_KeyframesLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
@@ -1069,8 +1115,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -1865,6 +1916,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void btnAgregarFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarFrameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarFrameActionPerformed
+
+    private void btnEditarFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarFrameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarFrameActionPerformed
+
+    private void btnEliminarFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarFrameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarFrameActionPerformed
     Canvas y;
 
  
@@ -1923,12 +1986,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> boxSesgo;
     private ej2graf1.MiButton btnAgregarFig;
     private ej2graf1.MiButton btnAgregarFig3D;
+    public ej2graf1.MiButton btnAgregarFrame;
     private ej2graf1.MiButton btnAgregarPunto;
     private ej2graf1.MiButton btnEditarFig;
+    public ej2graf1.MiButton btnEditarFrame;
     private ej2graf1.MiButton btnEditarPunto;
     private ej2graf1.MiButton btnEliminarFig;
     private ej2graf1.MiButton btnEliminarFig3D;
     private ej2graf1.MiButton btnEliminarFig3D1;
+    public ej2graf1.MiButton btnEliminarFrame;
     private ej2graf1.MiButton btnEliminarPunto;
     private ej2graf1.MiButton btnEscalar;
     public ej2graf1.MiButton btnPlay;
