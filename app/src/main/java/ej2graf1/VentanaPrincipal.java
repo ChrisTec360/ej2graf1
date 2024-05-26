@@ -28,6 +28,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.util.prefs.Preferences;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JColorChooser;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 //import static sun.net.www.http.HttpClient.New;
 
@@ -120,6 +122,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 select3D = lista3D.getSelectedValue();
                 //System.out.println(JLST_PUNTOS.getSelectedValue().toString());
             }
+        });
+        
+        SliderTiempo.addChangeListener(new ChangeListener(){
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if(SliderTiempo.getValueIsAdjusting()){
+                    canvas.setFotograma(SliderTiempo.getValue());
+                }
+            }
+            
         });
     }
 
