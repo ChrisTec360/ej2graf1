@@ -6,11 +6,13 @@ package ej2graf1;
 
 import javax.swing.DefaultListModel;
 
-enum transformacionKeyframe {
-    NINGUNO, TRASLACIÓN, ESCALADO, ROTACIÓN, SESGADO_X, SESGADO_Y
-}
 
 public class Keyframe {
+    
+    public enum transformacionKeyframe {
+        NINGUNO, TRASLACIÓN, ESCALADO, ROTACIÓN, SESGADO_X, SESGADO_Y
+    }
+
     int num_fotograma;
     Figura figura;
     transformacionKeyframe transformacion = transformacionKeyframe.NINGUNO;

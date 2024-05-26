@@ -14,8 +14,9 @@ import javax.swing.DefaultListModel;
  */
 public class Figura {
     private String nombre;
-    public int escale=20;
     public DefaultListModel<Keyframe> listakeyframes;
+    public int escale=20;
+    
     Canvas c;
     
     public Keyframe getkeyframeInicial(){
