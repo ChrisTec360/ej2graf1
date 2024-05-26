@@ -18,7 +18,7 @@ public class Keyframe {
     transformacionKeyframe transformacion = transformacionKeyframe.NINGUNO;
     
     float[] param = new float[2];
-    private DefaultListModel<Punto> listaPuntos;
+    public DefaultListModel<Punto> listaPuntos;
     
     public Keyframe(int num_fot, transformacionKeyframe transf, Figura figura, float[] par){
         this.num_fotograma = num_fot;

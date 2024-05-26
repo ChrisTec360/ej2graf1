@@ -99,7 +99,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 
                 if(FiguraSeleccionada != null)
                 {
-                    JLST_PUNTOS.setModel(FiguraSeleccionada.getListaPuntos());
+                    JLST_PUNTOS.setModel(FiguraSeleccionada.getKeyframeInicial().listaPuntos);
                 }
             }
         });
@@ -1319,7 +1319,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(FiguraSeleccionada != null && getPuntoSeleccionado() != null)
         {
-            FiguraSeleccionada.getListaPuntos().removeElement(getPuntoSeleccionado());
+            FiguraSeleccionada.getKeyframeInicial().listaPuntos.removeElement(getPuntoSeleccionado());
         }
         
         JLST_PUNTOS.updateUI();
@@ -1334,7 +1334,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             cajaPuntoX.setText(""+px);
             cajaPuntoX.setText(""+py);
             
-            FiguraSeleccionada.getListaPuntos().addElement(new Punto(px,py));
+            FiguraSeleccionada.getKeyframeInicial().listaPuntos.addElement(new Punto(px,py));
         }
         
         JLST_PUNTOS.updateUI();
@@ -1372,8 +1372,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
             Matriz33 m33 = new Matriz33(valores3x3);
 
-            for(int i = 0; i < FiguraSeleccionada.getListaPuntos().getSize(); i++){
-                Punto elactual = FiguraSeleccionada.getListaPuntos().get(i);
+            for(int i = 0; i < FiguraSeleccionada.getKeyframeInicial().listaPuntos.getSize(); i++){
+                Punto elactual = FiguraSeleccionada.getKeyframeInicial().listaPuntos.get(i);
                 float x = elactual.getPx();
                 float y = elactual.getPy();
                 
@@ -1413,8 +1413,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     Figura f = canvas.ListaFiguras.get(i);
                     s += f.getNombre();
 
-                    for (int j = 0; j < f.getListaPuntos().size(); j++) {
-                        Punto p = f.getListaPuntos().get(j);
+                    for (int j = 0; j < f.getKeyframeInicial().listaPuntos.size(); j++) {
+                        Punto p = f.getKeyframeInicial().listaPuntos.get(j);
 
                         s += "," + p.getPx() + "," + p.getPy();
                     }
@@ -1462,7 +1462,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         float y = Floats.tryParse(tokens[i + 1]);
 
                         Punto p = new Punto(x, y);
-                        f.getListaPuntos().addElement(p);
+                        f.getKeyframeInicial().listaPuntos.addElement(p);
                     }
                     canvas.ListaFiguras.addElement(f); // Traemos el nombre de la figura
                 }
@@ -1504,7 +1504,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         float y = Floats.tryParse(tokens[i + 1]);
 
                         Punto p = new Punto(x, y);
-                        f.getListaPuntos().addElement(p);
+                        f.getKeyframeInicial().listaPuntos.addElement(p);
                     }
                     canvas.ListaFiguras.addElement(f); // Traemos el nombre de la figura
                     
@@ -1543,9 +1543,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 // 1. Calcular el centro de la figura
                 float centroX = 0;
                 float centroY = 0;
-                int numPuntos = FiguraSeleccionada.getListaPuntos().getSize();
+                int numPuntos = FiguraSeleccionada.getKeyframeInicial().listaPuntos.getSize();
                 for (int i = 0; i < numPuntos; i++) {
-                    Punto punto = FiguraSeleccionada.getListaPuntos().get(i);
+                    Punto punto = FiguraSeleccionada.getKeyframeInicial().listaPuntos.get(i);
                     centroX += punto.getPx();
                     centroY += punto.getPy();
                 }
@@ -1574,7 +1574,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 });
 
                 for (int i = 0; i < numPuntos; i++) {
-                    Punto punto = FiguraSeleccionada.getListaPuntos().get(i);
+                    Punto punto = FiguraSeleccionada.getKeyframeInicial().listaPuntos.get(i);
                     float[] puntoArray = {punto.getPx(), punto.getPy(), 1};
                     Matriz31 puntoMatriz = new Matriz31(puntoArray);
 
@@ -1608,9 +1608,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 // 1. Calcular el centro de la figura
                 float centroX = 0;
                 float centroY = 0;
-                int numPuntos = FiguraSeleccionada.getListaPuntos().getSize();
+                int numPuntos = FiguraSeleccionada.getKeyframeInicial().listaPuntos.getSize();
                 for (int i = 0; i < numPuntos; i++) {
-                    Punto punto = FiguraSeleccionada.getListaPuntos().get(i);
+                    Punto punto = FiguraSeleccionada.getKeyframeInicial().listaPuntos.get(i);
                     centroX += punto.getPx();
                     centroY += punto.getPy();
                 }
@@ -1639,7 +1639,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 });
 
                 for (int i = 0; i < numPuntos; i++) {
-                    Punto punto = FiguraSeleccionada.getListaPuntos().get(i);
+                    Punto punto = FiguraSeleccionada.getKeyframeInicial().listaPuntos.get(i);
                     float[] puntoArray = {punto.getPx(), punto.getPy(), 1};
 
                     Matriz31 puntoMatriz = new Matriz31(puntoArray);
@@ -1680,8 +1680,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 String tipo = (String) boxSesgo.getSelectedItem();
                 switch (tipo) {
                     case "x":
-                        for (int i = 0; i < FiguraSeleccionada.getListaPuntos().getSize(); i++) {
-                            Punto elactual = FiguraSeleccionada.getListaPuntos().get(i);
+                        for (int i = 0; i < FiguraSeleccionada.getKeyframeInicial().listaPuntos.getSize(); i++) {
+                            Punto elactual = FiguraSeleccionada.getKeyframeInicial().listaPuntos.get(i);
 
                             float x = elactual.getPx();
                             float y = elactual.getPy();
@@ -1710,8 +1710,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         break;
                     
                     case "y":
-                        for (int i = 0; i < FiguraSeleccionada.getListaPuntos().getSize(); i++) {
-                            Punto elactual = FiguraSeleccionada.getListaPuntos().get(i);
+                        for (int i = 0; i < FiguraSeleccionada.getKeyframeInicial().listaPuntos.getSize(); i++) {
+                            Punto elactual = FiguraSeleccionada.getKeyframeInicial().listaPuntos.get(i);
 
                             float x = elactual.getPx();
                             float y = elactual.getPy();
@@ -1765,7 +1765,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     float y = Floats.tryParse(tokens[i + 1]);
 
                     Punto p = new Punto(x, y);
-                    f.getListaPuntos().addElement(p);
+                    f.getKeyframeInicial().listaPuntos.addElement(p);
                 }
                 canvas.ListaFiguras.addElement(f); // Traemos el nombre de la figura
             }
