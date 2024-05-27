@@ -56,7 +56,7 @@ public class Canvas implements ApplicationListener{
     
     void actualizarEtiquetaTiempo(){
         int minutos = (int)(fotograma_actual / 3600);
-       // int segundos (int)(minutos + ":" + segundos + "/" + fotograma_actual);
+       //int segundos (int)(minutos + ":" + segundos + "/" + fotograma_actual);
         
         v.LBL_Tiempo.setText(fotograma_actual + "/" + MAX_FOTOGRAMAS);
     }

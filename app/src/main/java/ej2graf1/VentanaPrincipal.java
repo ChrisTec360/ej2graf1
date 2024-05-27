@@ -40,10 +40,11 @@ import javax.swing.event.ChangeListener;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     Canvas canvas;
+    Figura figura;
     private String rutaArchivoActual = null;
-    private Figura FiguraSeleccionada = null;
-    private Punto puntoSeleccionado = null;
-    private Obj3D select3D = null;
+    Figura FiguraSeleccionada = null;
+    Punto puntoSeleccionado = null;
+    Obj3D select3D = null;
     
     
     /**
@@ -92,6 +93,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         JLSTFiguras.setModel(canvas.ListaFiguras);
         lista3D.setModel(canvas.ListaFiguras3D);
         
+             
         
         JLSTFiguras.addListSelectionListener(new ListSelectionListener()
         {
@@ -102,6 +104,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 if(FiguraSeleccionada != null)
                 {
                     JLST_PUNTOS.setModel(FiguraSeleccionada.getKeyframeInicial().listaPuntos);
+                    JLST_Keyframes.setModel(FiguraSeleccionada.listakeyframes);
                 }
             }
         });
@@ -133,6 +136,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
             
         });
+    
+    
     }
 
     /**
@@ -227,15 +232,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnSiguiente = new javax.swing.JButton();
         SliderTiempo = new javax.swing.JSlider();
         LBL_Tiempo = new javax.swing.JLabel();
-        JLST_Keyframes = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        JLST_Keyframesss = new javax.swing.JPanel();
+        cajaTransformer = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        cajaParam1 = new javax.swing.JTextField();
+        cajaParam2 = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        JLST_Keyframes = new javax.swing.JList<>();
         btnAgregarFrame = new ej2graf1.MiButton();
         btnEditarFrame = new ej2graf1.MiButton();
         btnEliminarFrame = new ej2graf1.MiButton();
@@ -1023,10 +1028,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         LBL_Tiempo.setText("jLabel14");
 
-        JLST_Keyframes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        JLST_Keyframesss.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jComboBox1.setModel(new DefaultComboBoxModel<Keyframe.transformacionKeyframe>(Keyframe.transformacionKeyframe.values())
+        cajaTransformer.setModel(new DefaultComboBoxModel<Keyframe.transformacionKeyframe>(Keyframe.transformacionKeyframe.values())
         );
+        cajaTransformer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cajaTransformerActionPerformed(evt);
+            }
+        });
 
         jLabel14.setText("Transformaciones");
 
@@ -1034,19 +1044,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel16.setText("Param. 2:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        cajaParam1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                cajaParam1ActionPerformed(evt);
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        cajaParam2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                cajaParam2ActionPerformed(evt);
             }
         });
 
-        jScrollPane4.setViewportView(jList1);
+        jScrollPane4.setViewportView(JLST_Keyframes);
 
         btnAgregarFrame.setText("Agregar");
         btnAgregarFrame.setColorNormal(new java.awt.Color(0, 255, 0));
@@ -1084,52 +1094,52 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout JLST_KeyframesLayout = new javax.swing.GroupLayout(JLST_Keyframes);
-        JLST_Keyframes.setLayout(JLST_KeyframesLayout);
-        JLST_KeyframesLayout.setHorizontalGroup(
-            JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JLST_KeyframesLayout.createSequentialGroup()
+        javax.swing.GroupLayout JLST_KeyframesssLayout = new javax.swing.GroupLayout(JLST_Keyframesss);
+        JLST_Keyframesss.setLayout(JLST_KeyframesssLayout);
+        JLST_KeyframesssLayout.setHorizontalGroup(
+            JLST_KeyframesssLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JLST_KeyframesssLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JLST_KeyframesLayout.createSequentialGroup()
-                        .addComponent(btnAgregarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                        .addComponent(btnEditarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(JLST_KeyframesLayout.createSequentialGroup()
-                        .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(JLST_KeyframesLayout.createSequentialGroup()
-                                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel14))
-                                .addGap(26, 26, 26)
-                                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addGroup(JLST_KeyframesssLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JLST_KeyframesssLayout.createSequentialGroup()
+                        .addGroup(JLST_KeyframesssLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel14))
+                        .addGap(26, 26, 26)
+                        .addGroup(JLST_KeyframesssLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cajaParam2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cajaParam1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cajaTransformer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 128, Short.MAX_VALUE))
+                    .addGroup(JLST_KeyframesssLayout.createSequentialGroup()
+                        .addGroup(JLST_KeyframesssLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JLST_KeyframesssLayout.createSequentialGroup()
+                                .addComponent(btnAgregarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                                .addComponent(btnEditarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEliminarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap())))
         );
-        JLST_KeyframesLayout.setVerticalGroup(
-            JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JLST_KeyframesLayout.createSequentialGroup()
+        JLST_KeyframesssLayout.setVerticalGroup(
+            JLST_KeyframesssLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JLST_KeyframesssLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(JLST_KeyframesssLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cajaTransformer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(JLST_KeyframesssLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cajaParam1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(JLST_KeyframesssLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cajaParam2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(JLST_KeyframesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(JLST_KeyframesssLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminarFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1148,7 +1158,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(SliderTiempo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JLST_Keyframes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JLST_Keyframesss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -1177,7 +1187,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(3, 3, 3)
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JLST_Keyframes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JLST_Keyframesss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
@@ -1917,21 +1927,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         canvas.fotogramaSiguiente();
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void cajaParam1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaParam1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_cajaParam1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         canvas.fotogramaAnterior();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void cajaParam2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaParam2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_cajaParam2ActionPerformed
 
     private void btnAgregarFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarFrameActionPerformed
-        // TODO add your handling code here:
+        if(FiguraSeleccionada != null){
+            
+            int frame = canvas.fotograma_actual;
+            float[] par = {0,0};
+            par[0] = Floats.tryParse(cajaParam1.getText());
+            par[1] = Floats.tryParse(cajaParam2.getText());
+            
+            Keyframe.transformacionKeyframe transf = (Keyframe.transformacionKeyframe)cajaTransformer.getSelectedItem();
+            
+            Keyframe k = new Keyframe(frame, transf, FiguraSeleccionada,par);    
+           
+            FiguraSeleccionada.AgregarKeyframe(k);
+            
+
+        }
+        
     }//GEN-LAST:event_btnAgregarFrameActionPerformed
 
     private void btnEditarFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarFrameActionPerformed
@@ -1941,6 +1966,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btnEliminarFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarFrameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarFrameActionPerformed
+
+    private void cajaTransformerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaTransformerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cajaTransformerActionPerformed
     Canvas y;
 
  
@@ -1986,7 +2015,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<tipoPrimitiva> Figuras3D;
     private javax.swing.JList<Figura> JLSTFiguras;
-    private javax.swing.JPanel JLST_Keyframes;
+    private javax.swing.JList<Keyframe> JLST_Keyframes;
+    private javax.swing.JPanel JLST_Keyframesss;
     private javax.swing.JList<Punto> JLST_PUNTOS;
     public javax.swing.JLabel LBL_Tiempo;
     public javax.swing.JSlider SliderTiempo;
@@ -2017,10 +2047,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ej2graf1.MiButton btnTrasladar;
     private javax.swing.JTextField cajaEscalarX;
     private javax.swing.JTextField cajaEscalarY;
+    private javax.swing.JTextField cajaParam1;
+    private javax.swing.JTextField cajaParam2;
     private javax.swing.JTextField cajaPuntoX;
     private javax.swing.JTextField cajaPuntoY;
     private javax.swing.JTextField cajaRotar;
     private javax.swing.JTextField cajaSesgar;
+    private javax.swing.JComboBox<Keyframe.transformacionKeyframe> cajaTransformer;
     private javax.swing.JTextField cajaTraslacionX;
     private javax.swing.JTextField cajaTraslacionY;
     private javax.swing.JMenuItem cargarItem;
@@ -2034,7 +2067,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem guardarItem;
     private javax.swing.JMenuItem itemNuevo;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<Keyframe.transformacionKeyframe> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2053,7 +2085,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<Keyframe> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -2068,8 +2099,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel labelcajaTraslacionX;
     private javax.swing.JLabel labelcajaTraslacionY;

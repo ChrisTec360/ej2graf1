@@ -31,6 +31,6 @@ public class Keyframe {
     
     @Override
     public String toString(){
-        return num_fotograma + ": "+ figura.getNombre() + "; "+ param[0] + param[1];
+        return num_fotograma + ": "+ figura.getNombre() + "; " + transformacion.toString() + "; " +  param[0] + ", " + param[1];
     }
 }
