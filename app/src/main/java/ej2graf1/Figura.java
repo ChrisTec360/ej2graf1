@@ -30,7 +30,7 @@ public class Figura {
     public void EliminarKeyframe(Keyframe k) throws IllegalArgumentException{
         int idx = listakeyframes.indexOf(k);
         if(idx > 0){
-            listakeyframes.removeElement(idx);
+            listakeyframes.removeElement(k);
         }else{
             throw new IllegalArgumentException("Error! No se puede eliminar el keyframe 0");
         }

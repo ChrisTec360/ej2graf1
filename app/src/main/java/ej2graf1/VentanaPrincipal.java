@@ -1983,20 +1983,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btnAgregarFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarFrameActionPerformed
         if(FiguraSeleccionada != null){
-            
-            int frame = canvas.fotograma_actual;
-            float[] par = {0,0};
-            par[0] = Floats.tryParse(cajaParam1.getText());
-            par[1] = Floats.tryParse(cajaParam2.getText());
-            
-            Keyframe.transformacionKeyframe transf = (Keyframe.transformacionKeyframe)cajaTransformer.getSelectedItem();
-            
-            Keyframe k = new Keyframe(frame, transf, FiguraSeleccionada,par);    
-           
-            FiguraSeleccionada.AgregarKeyframe(k);
-            
-        }
-        
+            if(cajaParam1.getText().isEmpty() || cajaParam2.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Por favor llena todos los campos");
+            }else{
+                int frame = canvas.fotograma_actual;
+                float[] par = {0,0};
+                par[0] = Floats.tryParse(cajaParam1.getText());
+                par[1] = Floats.tryParse(cajaParam2.getText());
+
+                Keyframe.transformacionKeyframe transf = (Keyframe.transformacionKeyframe)cajaTransformer.getSelectedItem();
+
+                Keyframe k = new Keyframe(frame, transf, FiguraSeleccionada,par);    
+
+                FiguraSeleccionada.AgregarKeyframe(k);    
+            }
+        }        
     }//GEN-LAST:event_btnAgregarFrameActionPerformed
 
     private void btnEditarFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarFrameActionPerformed
@@ -2025,7 +2026,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btnEliminarFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarFrameActionPerformed
         if(FiguraSeleccionada != null && KeyframeSeleccionado != null){
             try {
-                FiguraSeleccionada.EliminarKeyframe(KeyframeSeleccionado);
+                int resp = JOptionPane.showConfirmDialog(null, "Sí o No",
+                "Quieres eliminar este frame?", JOptionPane.YES_NO_OPTION,
+                JOptionPane.INFORMATION_MESSAGE);
+                switch (resp) {
+                    case 0:
+                        FiguraSeleccionada.EliminarKeyframe(KeyframeSeleccionado);
+                        break;
+                    case 1:    
+                        break;
+                    }
+        
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
