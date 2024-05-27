@@ -2023,7 +2023,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarFrameActionPerformed
 
     private void btnEliminarFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarFrameActionPerformed
-        // TODO add your handling code here:
+        if(FiguraSeleccionada != null && KeyframeSeleccionado != null){
+            try {
+                FiguraSeleccionada.EliminarKeyframe(KeyframeSeleccionado);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+            JLST_Keyframes.updateUI();
+        }
     }//GEN-LAST:event_btnEliminarFrameActionPerformed
 
     private void cajaTransformerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaTransformerActionPerformed
