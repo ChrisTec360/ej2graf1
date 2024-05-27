@@ -6,6 +6,7 @@ package ej2graf1;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
+import java.util.Arrays;
 import javax.swing.DefaultListModel;
 
 /**
@@ -23,7 +24,13 @@ public class Figura {
         return listakeyframes.get(0);
     }
    
-    public void AgregarKeyframe(Keyframe k){
+    public void AgregarKeyframe(Keyframe k)throws IllegalArgumentException{
+        boolean encontrado = Arrays.stream(listakeyframes.toArray()).anyMatch(x -> ((Keyframe)x).num_fotograma == k.num_fotograma);
+        
+        if (encontrado) {
+            throw new IllegalArgumentException("Eror: Ya existe un keyframe en ese fotograma");
+        }
+        
         listakeyframes.addElement(k); 
     }
     

@@ -1085,12 +1085,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel16.setText("Param. 2:");
 
+        cajaParam1.setText("0");
         cajaParam1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cajaParam1ActionPerformed(evt);
             }
         });
 
+        cajaParam2.setText("0");
         cajaParam2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cajaParam2ActionPerformed(evt);
@@ -1995,7 +1997,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
                 Keyframe k = new Keyframe(frame, transf, FiguraSeleccionada,par);    
 
-                FiguraSeleccionada.AgregarKeyframe(k);    
+                try {
+                    FiguraSeleccionada.AgregarKeyframe(k);        
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage());
+                }
+                
+                
             }
         }        
     }//GEN-LAST:event_btnAgregarFrameActionPerformed
