@@ -58,6 +58,24 @@ public class Figura {
         }
     }
     
+    public Keyframe getKeyframeAnterior(int num_fotograma){
+        Keyframe k = listakeyframes.get(0);
+        
+        if(listakeyframes.size() > 1 && num_fotograma > 0){
+            
+            for (int i = 0; i < listakeyframes.size(); i++) {
+                k = listakeyframes.get(i);
+                
+                if(i < listakeyframes.size()-1
+                    && num_fotograma >= listakeyframes.get(i).num_fotograma
+                    && num_fotograma < listakeyframes.get(i+1).num_fotograma)
+                {
+                    break;
+                }
+            }
+        }
+        return k; 
+    }
     
     public Figura(String nombre) {
         this.nombre = nombre;
@@ -80,6 +98,12 @@ public class Figura {
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    public void ActualizarAnimacion(int num_fotograma){
+        Keyframe anterior = getKeyframeAnterior(num_fotograma);
+        
+        System.out.println("Anterior: " + anterior.num_fotograma);
     }
     
     public void dibujar(ShapeRenderer rend)

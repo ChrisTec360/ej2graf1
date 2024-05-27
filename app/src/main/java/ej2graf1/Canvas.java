@@ -44,8 +44,9 @@ public class Canvas implements ApplicationListener{
     
     public void fotogramaAnterior(){
         setFotograma(fotograma_actual-1);
-        
+
         actualizarEtiquetaTiempo();
+        actualizarSlider();
     }
     public void fotogramaSiguiente(){
         setFotograma(fotograma_actual+1);
@@ -58,7 +59,7 @@ public class Canvas implements ApplicationListener{
         int minutos = (int)(fotograma_actual / 3600);
        //int segundos (int)(minutos + ":" + segundos + "/" + fotograma_actual);
         
-        v.LBL_Tiempo.setText(fotograma_actual + "/" + MAX_FOTOGRAMAS);
+        v.LBL_Tiempo.setText(minutos + fotograma_actual + "/" + MAX_FOTOGRAMAS);
     }
     
     void actualizarSlider(){
@@ -68,6 +69,11 @@ public class Canvas implements ApplicationListener{
     public void setFotograma(int valor){
         fotograma_actual = valor;
         actualizarEtiquetaTiempo();
+        actualizarSlider();
+        
+        for (int i = 0; i < ListaFiguras.getSize(); i++) {
+            ListaFiguras.get(i).ActualizarAnimacion(fotograma_actual);
+        }
     }
     
     

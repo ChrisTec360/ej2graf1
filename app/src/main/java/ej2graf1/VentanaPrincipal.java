@@ -93,9 +93,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         JLSTFiguras.setModel(canvas.ListaFiguras);
         lista3D.setModel(canvas.ListaFiguras3D);
-        
-             
-        
+     
         JLSTFiguras.addListSelectionListener(new ListSelectionListener()
         {
             @Override
@@ -128,8 +126,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         cajaPuntoY.setText("");
                     }
                 }
-                
-                
+                     
                 //System.out.println(JLST_PUNTOS.getSelectedValue().toString());
             }
         });
@@ -155,7 +152,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     }
                 }
                 
-                
                 //System.out.println(JLST_PUNTOS.getSelectedValue().toString());
             }
         });
@@ -175,7 +171,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     canvas.setFotograma(SliderTiempo.getValue());
                 }
             }
-            
         });
     
     
