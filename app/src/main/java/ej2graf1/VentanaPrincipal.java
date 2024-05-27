@@ -44,6 +44,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private String rutaArchivoActual = null;
     Figura FiguraSeleccionada = null;
     Punto puntoSeleccionado = null;
+    Keyframe KeyframeSeleccionado = null;
     Obj3D select3D = null;
     
     
@@ -116,11 +117,48 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                setPuntoSeleccionado(JLST_PUNTOS.getSelectedValue());
+                if(FiguraSeleccionada != null){
+                    puntoSeleccionado = JLST_PUNTOS.getSelectedValue();
+                    //setPuntoSeleccionado(JLST_PUNTOS.getSelectedValue()); 
+                    if(puntoSeleccionado != null){
+                        cajaPuntoX.setText(""+puntoSeleccionado.getPx());
+                        cajaPuntoY.setText(""+puntoSeleccionado.getPy());
+                    }else{
+                        cajaPuntoX.setText("");
+                        cajaPuntoY.setText("");
+                    }
+                }
+                
+                
                 //System.out.println(JLST_PUNTOS.getSelectedValue().toString());
             }
         });
         
+        JLST_Keyframes.addListSelectionListener(new ListSelectionListener()
+        {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if(FiguraSeleccionada != null){
+                    KeyframeSeleccionado = JLST_Keyframes.getSelectedValue();
+                    
+                    if(KeyframeSeleccionado != null){
+                        canvas.setFotograma(KeyframeSeleccionado.num_fotograma);
+                        cajaTransformer.setSelectedItem(KeyframeSeleccionado.transformacion);
+                        
+                        cajaParam1.setText(""+KeyframeSeleccionado.param[0]);
+                        cajaParam2.setText(""+KeyframeSeleccionado.param[1]);
+                    }else{
+                        cajaTransformer.setSelectedIndex(0);
+                        
+                        cajaParam1.setText("0");
+                        cajaParam2.setText("0");
+                    }
+                }
+                
+                
+                //System.out.println(JLST_PUNTOS.getSelectedValue().toString());
+            }
+        });
         
         lista3D.addListSelectionListener(new ListSelectionListener() {
             @Override
