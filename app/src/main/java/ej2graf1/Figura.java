@@ -27,6 +27,15 @@ public class Figura {
         listakeyframes.addElement(k); 
     }
     
+    public void EliminarKeyframe(Keyframe k) throws IllegalArgumentException{
+        int idx = listakeyframes.indexOf(k);
+        if(idx > 0){
+            listakeyframes.removeElement(idx);
+        }else{
+            throw new IllegalArgumentException("Error! No se puede eliminar el keyframe 0");
+        }
+    }
+    
     
     public Figura(String nombre) {
         this.nombre = nombre;
