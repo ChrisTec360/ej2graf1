@@ -1995,13 +1995,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
            
             FiguraSeleccionada.AgregarKeyframe(k);
             
-
         }
         
     }//GEN-LAST:event_btnAgregarFrameActionPerformed
 
     private void btnEditarFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarFrameActionPerformed
-        // TODO add your handling code here:
+        if(FiguraSeleccionada != null){
+            if(KeyframeSeleccionado != null){
+                if(JLST_Keyframes.getSelectedIndex() > 0){
+                    int frame = canvas.fotograma_actual;
+                    float[] par = {0,0};
+                    par[0] = Floats.tryParse(cajaParam1.getText());
+                    par[1] = Floats.tryParse(cajaParam2.getText());
+
+                    Keyframe.transformacionKeyframe transf = (Keyframe.transformacionKeyframe)cajaTransformer.getSelectedItem();
+
+                    KeyframeSeleccionado.num_fotograma = frame;
+                    KeyframeSeleccionado.transformacion = transf;
+                    KeyframeSeleccionado.param = par;
+
+                    JLST_Keyframes.updateUI();
+                }else{
+                    JOptionPane.showMessageDialog(this, "Error! No se puede editar el keyframe 0");
+                }
+            }
+        }
     }//GEN-LAST:event_btnEditarFrameActionPerformed
 
     private void btnEliminarFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarFrameActionPerformed
