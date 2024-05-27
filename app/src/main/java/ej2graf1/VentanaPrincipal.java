@@ -103,8 +103,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 
                 if(FiguraSeleccionada != null)
                 {
-                    JLST_PUNTOS.setModel(FiguraSeleccionada.getKeyframeInicial().listaPuntos);
+                    jTextField4.setName(FiguraSeleccionada.getNombre());
+                    JLST_PUNTOS.setModel(FiguraSeleccionada.listakeyframes.get(0).listaPuntos);
                     JLST_Keyframes.setModel(FiguraSeleccionada.listakeyframes);
+                }else{
+                    jTextField4.setText("");
                 }
             }
         });
