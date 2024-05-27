@@ -7,6 +7,8 @@ package ej2graf1;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import javax.swing.DefaultListModel;
 
 /**
@@ -32,6 +34,7 @@ public class Figura {
         }
         
         listakeyframes.addElement(k); 
+        ordenarKeyframes();
     }
     
     public void EliminarKeyframe(Keyframe k) throws IllegalArgumentException{
@@ -40,6 +43,18 @@ public class Figura {
             listakeyframes.removeElement(k);
         }else{
             throw new IllegalArgumentException("Error! No se puede eliminar el keyframe 0");
+        }
+        ordenarKeyframes();
+    }
+    
+    public void ordenarKeyframes(){
+        List<Object> lista_ordenada = Arrays.asList(listakeyframes.toArray());
+        lista_ordenada.sort(Comparator.comparing(x -> ((Keyframe)x).num_fotograma));
+        
+        listakeyframes.clear();
+        
+        for(Object k : lista_ordenada){
+            listakeyframes.addElement((Keyframe)k);
         }
     }
     

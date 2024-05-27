@@ -2002,8 +2002,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, e.getMessage());
                 }
-                
-                
+                FiguraSeleccionada.ordenarKeyframes();
+                JLST_Keyframes.updateUI();
             }
         }        
     }//GEN-LAST:event_btnAgregarFrameActionPerformed
@@ -2023,6 +2023,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     KeyframeSeleccionado.transformacion = transf;
                     KeyframeSeleccionado.param = par;
 
+                    FiguraSeleccionada.ordenarKeyframes();
+                    
                     JLST_Keyframes.updateUI();
                 }else{
                     JOptionPane.showMessageDialog(this, "Error! No se puede editar el keyframe 0");
