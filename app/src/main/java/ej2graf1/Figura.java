@@ -35,6 +35,7 @@ public class Figura {
         
         listakeyframes.addElement(k); 
         ordenarKeyframes();
+        System.out.println("agregado, nuevo size:  " + listakeyframes.size());
     }
     
     public void EliminarKeyframe(Keyframe k) throws IllegalArgumentException{
@@ -51,16 +52,16 @@ public class Figura {
         List<Object> lista_ordenada = Arrays.asList(listakeyframes.toArray());
         lista_ordenada.sort(Comparator.comparing(x -> ((Keyframe)x).num_fotograma));
         
-        listakeyframes.clear();
+        listakeyframes.clear(); 
         
         for(Object k : lista_ordenada){
             listakeyframes.addElement((Keyframe)k);
         }
+         
     }
     
     public Keyframe getKeyframeAnterior(int num_fotograma){
         Keyframe k = listakeyframes.get(0);
-        
         if(listakeyframes.size() > 1 && num_fotograma > 0){
             
             for (int i = 0; i < listakeyframes.size(); i++) {
@@ -75,6 +76,16 @@ public class Figura {
             }
         }
         return k; 
+    }
+    
+    public Keyframe GetKeyframeSiguiente(Keyframe anterior){
+        int idx_anterior = listakeyframes.indexOf(anterior);
+        
+        if(idx_anterior < listakeyframes.size()-1){
+            return listakeyframes.get(idx_anterior+1); 
+        }else{
+            return null;
+        }
     }
     
     public Figura(String nombre) {
@@ -103,7 +114,15 @@ public class Figura {
     public void ActualizarAnimacion(int num_fotograma){
         Keyframe anterior = getKeyframeAnterior(num_fotograma);
         
+        //Keyframe siguiente  = GetKeyframeSiguiente(anterior);
+        
         System.out.println("Anterior: " + anterior.num_fotograma);
+        /*
+        if(siguiente != null){
+            System.out.println("Siguiente: " + siguiente.num_fotograma);    
+        }else{
+            System.out.println("Siguiente: null");    
+        }*/
     }
     
     public void dibujar(ShapeRenderer rend)

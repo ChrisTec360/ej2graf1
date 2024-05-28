@@ -264,7 +264,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonAbajo = new ej2graf1.MiButton();
         jPanel2 = new javax.swing.JPanel();
         btnPlay = new ej2graf1.MiButton();
-        jButton1 = new javax.swing.JButton();
+        btnAnterior = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
         SliderTiempo = new javax.swing.JSlider();
         LBL_Tiempo = new javax.swing.JLabel();
@@ -1045,10 +1045,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("<");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAnterior.setText("<");
+        btnAnterior.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAnteriorActionPerformed(evt);
             }
         });
 
@@ -1202,7 +1202,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)
+                                .addComponent(btnAnterior)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSiguiente))
                             .addComponent(LBL_Tiempo)
@@ -1216,7 +1216,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
+                    .addComponent(btnAnterior)
                     .addComponent(btnSiguiente))
                 .addGap(18, 18, 18)
                 .addComponent(SliderTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1969,10 +1969,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cajaParam1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
         // TODO add your handling code here:
         canvas.fotogramaAnterior();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAnteriorActionPerformed
 
     private void cajaParam2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaParam2ActionPerformed
         // TODO add your handling code here:
@@ -2113,6 +2113,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ej2graf1.MiButton btnAgregarFig3D;
     public ej2graf1.MiButton btnAgregarFrame;
     private ej2graf1.MiButton btnAgregarPunto;
+    private javax.swing.JButton btnAnterior;
     private ej2graf1.MiButton btnEditarFig;
     public ej2graf1.MiButton btnEditarFrame;
     private ej2graf1.MiButton btnEditarPunto;
@@ -2148,7 +2149,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.ButtonGroup grupoRadios;
     private javax.swing.JMenuItem guardarItem;
     private javax.swing.JMenuItem itemNuevo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
